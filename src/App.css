@@ -1,38 +1,260 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+@import url(https://fonts.googleapis.com/css?family=Roboto:900|Roboto+Mono:300,400,700);
+/* @import url(main.css); */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* 
+footer menu
+*/
+
+#main-menu a.active,
+#mobileMenu a.active {
+  color: #ffcccc; /* contrast ratio [8B0000 and ffcccc] 7:03:1 */
+  font-weight: 600;
+  text-decoration: underline;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+#footer-menu a.active {
+  color: #ffcccc;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+#footer-menu li > a:hover {
+  color: #ffcccc;
+  font-weight: 700;
+}
+
+/* --- Menu Bars ------------------------------------ */
+
+.menu-bars {
+  position: fixed;
+  top: 6rem;
+  right: 2rem;
+  z-index: 50;
+  display: inline;
+  cursor: pointer;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  background-color: #fff;
+  width: 35px;
+  height: 2px;
+  font-weight: 900;
+  margin: 8px 0;
+  transition: 0.4s;
+}
+/* Rotate first bar */
+.change .bar1 {
+  transform: rotate(-45deg) translate(-7px, 8px);
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+  opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+  transform: rotate(45deg) translate(-6px, -8px);
+}
+
+.show-mobileMenu {
+  /* width: 450px; */
+  /* left: -140px; */
+  transition: width 1500ms;
+  animation: linear;
+}
+
+.pull-menu {
+  width: "70%";
+  transition: "width 1500ms ";
+  animation: "linear";
+  border: "1px solid gray";
+}
+
+.push-menu {
+  width: "10%";
+  transition: "width 1500ms ";
+  animation: "linear";
+  border: "1px solid gray";
+}
+
+.overlay {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: translateX(-100vw);
+}
+
+.overlay-slide-left {
+  transition: all 0.8s ease-in-out;
+  transform: translateX(-100vw);
+}
+
+.overlay-slide-right {
+  transition: all 0.4s ease-in-out;
+  transform: translateX(0);
+}
+
+/* 
+.hero-full-container .hero-full-wrapper {
+  display: table;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+}
+.hero-full-container .hero-full-wrapper .text-content {
+  vertical-align: middle;
+  display: table-cell;
+} */
+
+@media only screen and (max-width: 374px) {
+  #photo-gallery {
+    background: center 50% url("/public/Sunset\ at\ Weligama.jpg");
+    background-size: cover;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media only screen and (min-width: 375px) {
+  /* For tablets: */
+  #photo-gallery {
+    background: center 50% url("/public/Sunset\ at\ Weligama.jpg");
+    background-size: cover;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  #photo-gallery {
+    background: center 50% url("/public/Sunset\ at\ Weligama.jpg");
+    background-size: cover;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  #photo-gallery {
+    background: center 70% url("/public/Sunset\ at\ Weligama.jpg");
+    background-size: cover;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  /* For desktop: */
+  #photo-gallery {
+    background: 70% url("/public/Sunset\ at\ Weligama.jpg");
+    background-size: cover;
+  }
+}
+
+/* 
+@media (min-width: 30em) and (max-width: 50em) {
+  #photo-gallery {
+    background: 50% url("/public/Sunset\ at\ Weligama.jpg");
+  }
+}
+
+@media (610px <= width <= 310px) {
+  #photo-gallery {
+    background: 30% url("/public/Sunset\ at\ Weligama.jpg");
+  }
+}
+
+@media (50em >= width >= 30em) {
+  #photo-gallery {
+    background: 100% url("/public/Sunset\ at\ Weligama.jpg");
+  }
+} */
+
+/* this is used by react PDF */
+/* body { margin: 0; background-color: #525659; font-family: Segoe UI,
+    Tahoma,
+    sans-serif; } .Example input,
+    .Example button { font: inherit; } /* .Example header { background-color: #0f568d; box-shadow: 0 0 8px rgba(0, 0, 0, 0.5) ; padding: 20px; color: white; } 
+  */
+
+.pdf_header header h1 {
+  font-size: inherit;
+  margin: 0;
+}
+
+.pdf_container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.Example__container__load {
+  margin-top: 1em;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.pdf_container_document {
+  width: 100%;
+  max-width: calc(100% - 2em);
+  margin: 1em 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pdf_container_document .react-pdf__Document {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.pdf_container_document .react-pdf__Page {
+  margin: 1em 0;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.pdf_container_document .react-pdf__message {
+  padding: 20px;
+  color: white;
+}
+
+#splide .splide__arrows {
+  color: #800000 !important;
+  /* foreground: yellow; */
+}
+
+/* To change the color of the arrow icon itself */
+/* Example: Red color */
+/* .splide__arrow {
+  color: #ff0000; 
+} */
+
+/* If the arrow is an SVG, you might need to target its stroke or fill */
+#splide .splide__arrow svg {
+  fill: #800000; /* Example: Blue color for the SVG fill */
+  stroke: #800000; /* Example: Green color for the SVG stroke */
+}
+
+/* To change the background color of the arrow button (if applicable) */
+/* Example: Yellow background */
+/* .splide__arrow {
+  background-color: #ffff00; 
+}
+
+#splide .splide__track .splide_list .splide_slide {
+  fill: #800000;
+  stroke: #800000;
+} */

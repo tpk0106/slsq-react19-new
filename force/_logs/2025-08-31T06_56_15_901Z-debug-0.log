@@ -1,0 +1,18 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Users\thusi\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.4.2
+2 info using node@v22.18.0
+3 silly config load:file:C:\Users\thusi\AppData\Roaming\npm\node_modules\npm\npmrc
+4 silly config load:file:C:\srilankans-QLD\slsq-react19-new\slsq-react19-new-format\.npmrc
+5 silly config load:file:C:\Users\thusi\.npmrc
+6 silly config load:file:C:\Users\thusi\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm clear
+8 verbose argv "clear" "--cache" "force"
+9 verbose logfile logs-max:10 dir:C:\srilankans-QLD\slsq-react19-new\slsq-react19-new-format\force\_logs\2025-08-31T06_56_15_901Z-
+10 verbose logfile C:\srilankans-QLD\slsq-react19-new\slsq-react19-new-format\force\_logs\2025-08-31T06_56_15_901Z-debug-0.log
+11 silly logfile done cleaning log files
+12 verbose cwd C:\srilankans-QLD\slsq-react19-new\slsq-react19-new-format
+13 verbose os Windows_NT 10.0.19045
+14 verbose node v22.18.0
+15 verbose npm  v11.4.2
+16 verbose exit 1
+17 verbose code 1
