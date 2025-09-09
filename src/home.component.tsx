@@ -1,5 +1,5 @@
 // import React, { useEffect, useRef } from "react";
-// import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 // Default theme
 import "@splidejs/react-splide/css";
@@ -10,9 +10,8 @@ import "@splidejs/react-splide/css/sea-green";
 
 // or only core styles
 import "@splidejs/react-splide/css/core";
+import { Link } from "react-router-dom";
 
-// import t2 from "./assets/images/tea 2.jpg";
-// import beach1 from "./assets/images/beach1.jpg";
 // import beach2 from "./assets/images/beach2.jpg";
 // import beach3 from "./assets/images/beach3.jpg";
 // import beach4 from "./assets/images/beach4.jpg";
@@ -22,10 +21,16 @@ import "@splidejs/react-splide/css/core";
 // import elephant from "./assets/images/elephant.jpg";
 // import lotus from "./assets/images/lotus.jpg";
 // import nineArchBridge from "./assets/images/nine-arch-bridge.jpg";
-// import poster1 from "./assets/images/IMG-20250823-WA0009.jpg";
+// import { Link } from "react-router-dom";
 // import train from "./assets/images/train.jpg";
 // import bus from "./assets/images/bus.jpg";
 // import peacock from "./assets/images/peacock.jpg";
+import poster1 from "./assets/images/IMG-20250823-WA0009.jpg";
+
+function displayInfo() {
+  const e = document.getElementById("info");
+  e?.classList.toggle("hidden");
+}
 
 const Home = () => {
   // const splide = new Splide(".splide");
@@ -58,6 +63,37 @@ const Home = () => {
   return (
     <>
       <div
+        id="info"
+        className="w-[100%] md:w-[70%] min-h-[200px] md:min-h-[300px] hidden relative top-30 left-30 m-auto rounded-[1em] border-1 
+        border-[#000] shadow-[0px_10px_20px_0px_rgba(000,_10,_10,_0.15)] opacity-100 z-50 bg-[#800000] text-white"
+      >
+        <div className="px-5 py-5">
+          <a href="##" onClick={() => displayInfo()}>
+            X
+          </a>
+        </div>
+        <div className="px-10 h-[500px] md:h-[300px]">
+          In collaberation with Sri lanka society of queensland (SLSQ). with
+          prof. Raj Somadeva. Brisbane, Sepetember 6, 2025 St james Church Hall
+          165 Old Clevland Road, CoorParoo.
+          {/* <div>
+            <div>
+              <iframe
+                title="location"
+                src="https://www.google.com/maps/place/165+Old+Cleveland+Rd,+Coorparoo+QLD+4151/@-27.4990403,153.0493531,17z/data=!3m1!4b1!4m6!3m5!1s0x6b915a4f098aaff9:0x25f213984681c99f!8m2!3d-27.4990403!4d153.051928!16s%2Fg%2F11rp37vnwh?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D"
+                width={600}
+                height={200}
+                allowFullScreen={true}
+              >
+                Location
+              </iframe>
+            </div>
+          </div> */}
+        </div>
+      </div>
+
+      <div
+
       // data-aos="zoom-in"
       // // data-aos-offset="200"
       // data-aos-delay="50"
@@ -67,13 +103,16 @@ const Home = () => {
       // data-aos-once="false"
       // data-aos-anchor-placement="top-center"
       >
-        <div className="h1-screen w1-screen flex flex-row  left-1/4 right-1/4 -z-0 bg-[#EED3CC]">
+        <div
+          id="home"
+          className="h1-screen w1-screen flex flex-row  left-1/4 right-1/4 -z-0 bg-[#EED3CC]"
+        >
           <div className="flex m-auto w-[100%]">
             <div className="flex justify-around">
               <section className="pb-10">
                 <div className="w-[100%] m-auto sm:text-[1em] md:text-[1.5em] lg:text-[2em] px-10 sm:leading-relaxed lg:leading-loose text-center font-roboto">
                   {/*<div className="mt-0">
-                     <div
+                    <div
                       id="splide"
                       className="splide m-auto w-[60%] h-[40%] md:w-[80%] md:h-[30%]"
                     >
@@ -177,6 +216,20 @@ const Home = () => {
                       </Splide>
                     </div>
                   </div> */}
+                  <div className="w-[100%] m-auto image-container" id="poster">
+                    <div className="w-[80%] md:w-[60%] lg:w-[40%] m-auto">
+                      <Link to={"/"}>
+                        <img
+                          src={poster1}
+                          alt="Poster"
+                          className="w-[100%] rounded-[1em] border-2 border-white shadow-[0px_10px_20px_0px_rgba(000,_10,_10,_0.15)] 
+                                       hover:opacity1-80 hover:scale-[0.95] duration-300"
+                          // onClick={() => displayInfo()}
+                        />
+                      </Link>
+                    </div>
+                  </div>
+
                   <div className="sm:text-body-laptop md:text-[2.1em] lg:text-[2.3em] pt-10 pb-10 text-center">
                     Welcome! ආයුබෝවන් , வணக்கம், اَلسَّلامُ عَلَيْكُم and G’day
                   </div>

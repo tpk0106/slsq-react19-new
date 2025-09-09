@@ -86,58 +86,52 @@ const Publications = () => {
         <div
           id="id1"
           className="max-w-[90%] m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] mt-0 my-5"
-          // ref={targetRef}
+          ref={targetRef}
         >
-          <div
-            className="flex m-auto"
-            // ref={targetRef}
-          >
+          <div className="flex m-auto" ref={targetRef}>
             <section className="py-10 px-5 w-[100%]">
-              <div className="flex flex-col md:flex-row m1-auto justify-around">
-                <div>
+              <div className="flex w-[100%] flex-col md:flex-row m-auto justify-around text-base md:text-2xl items-center">
+                <ul>
                   {/* <div className="flex flex-col max1-w-[70%] m-auto justify-around text-base md:text-2xl sm:flex-row items-center"> */}
                   {PUBLICATIONS.map((publication) => {
                     return (
                       <>
-                        {/* <li className="border-4 border-green-300"> */}
-                        <div
-                          className="flex flex-col md:flex-row shadow-[0px_5px_10px_0px_rgba(139,_0,_0,_0.15)] p1-5 border-[1px] w-[100%]
-                                          my-4 rounded-[14px] bg-[#B222] text-[#7F1734] items-center border-white md:w-[95%] lg:w-[100%] m1-auto"
-                        >
+                        <li>
                           <div
-                            className="mx-4 md:mx-10 my-5 flex-col items-center m-auto text-center 
-                                          text-sm md:text-[1.0em] lg:text-[1.0em] xl:text-[1.3em] 2xl:text-[1.3em]"
+                            className="flex flex-col md:flex-row shadow-[0px_5px_10px_0px_rgba(139,_0,_0,_0.15)] p1-5 border-[1px] w-[100%]
+                                          my-4 rounded-[14px] bg-[#B222] text-[#7F1734] items-center"
                           >
-                            <div className="flex items-center w-[100%]">
-                              <div className="mx-auto">{publication.year}</div>
-                            </div>
-                            <hr className="border-1 border-[#800020] my1-3 p-2" />
-                            <div className="flex justify-between flex-col md:flex-row w-[100%] px-2">
-                              {publication.months.length === 0 && (
-                                <div> No publications for this year</div>
-                              )}
-                              {publication.months.map((m) => {
-                                return (
-                                  <div className="py-5">
-                                    <Publication
-                                      year={Number(publication.year)}
-                                      months={publication.months}
-                                      month={m.date}
-                                      file={m.file}
-                                      key={publication.year.toString()}
-                                    />
-                                  </div>
-                                );
-                              })}
+                            <div className="mx-4 md:mx-10 my-5 flex-col items-center m-auto text-center">
+                              <div className="flex items-center w-[100%]">
+                                <div className="mx-10">{publication.year}</div>
+                              </div>
+                              <hr className="border-1 border-[#800020]" />
+                              <div className="flex justify-between flex-col md:flex-row items-center">
+                                {publication.months.length === 0 && (
+                                  <div> No publications for this year</div>
+                                )}
+                                {publication.months.map((m) => {
+                                  return (
+                                    <div className="py-5">
+                                      <Publication
+                                        year={Number(publication.year)}
+                                        months={publication.months}
+                                        month={m.date}
+                                        file={m.file}
+                                        key={publication.year.toString()}
+                                      />
+                                    </div>
+                                  );
+                                })}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        {/* </li> */}
+                        </li>
                       </>
                     );
                   })}
                   {/* </div> */}
-                </div>
+                </ul>
               </div>
             </section>
           </div>
@@ -146,10 +140,7 @@ const Publications = () => {
         <div className="max-w-[90%] m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] mt-0 my-5">
           <div className="flex m-auto">
             <section className="py-10 px-5 w-[100%]">
-              <div
-                className="flex flex-col md:flex-row w-[100%] m-auto justify-around 
-                           text-sm md:text-[0.7em] lg:text-[1.0em] xl:text-[1.3em] 2xl:text-[1.3em] sm:flex-row items-center"
-              >
+              <div className="flex flex-col md:flex-row w-[100%] m-auto justify-around text-base md:text-2xl sm:flex-row items-center">
                 <div>
                   <Download
                     handleClick={() => handleDownloadMembershipFormClick()}

@@ -121,7 +121,7 @@ const PDFGenerator = ({ pdfurl, setParentState, key }: pdf) => {
                     </label>
                     <div className="hidden md:flex">
                       <label
-                        className="flex px-3 pt-2 text1-red-600 bg1-red-600"
+                        className="flex px-3 pt-2"
                         onClick={() => handlePdfZoomIn()}
                       >
                         <MagnifyingGlassPlus cssstyle="w-[1em] h-[1em]" />

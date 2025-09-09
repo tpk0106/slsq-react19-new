@@ -1,8 +1,4 @@
-import React from "react";
-import { EnvelopeOpenIcon } from "@heroicons/react/24/outline";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faAddressCard } from "@fortawesome/free-regular-svg-icons";
-// import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+import { EnvelopeOpenIcon, MapPinIcon } from "@heroicons/react/24/outline";
 
 // <svg
 //   xmlns="http://www.w3.org/2000/svg"
@@ -19,30 +15,22 @@ import { EnvelopeOpenIcon } from "@heroicons/react/24/outline";
 
 const ContactUs = () => {
   return (
-    <div className="md:max1-h-[50%] max1-w-[70%] min1-w-[50%] m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] mt-0 w-[80%] md:w-[50%]">
+    <div className="m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] mt-0 w-[80%] md:w-[50%]">
       <div className="flex m-auto">
-        <section className="py-10 px-5 border1-[5px] border1-red-700 w-[100%] overflow1-hidden">
-          <div className="flex w-[100%] m-auto justify-around text-base md:text-2xl sm:flex-row items-center">
+        <section className="py-10 px-5 w-[100%]">
+          <div className="flex w-[100%] m-auto justify-around text-base md:text-xl lg:text-2xl sm:flex-row items-center">
             <div className="px-3 md:p-0 m-auto">
-              {/* <FontAwesomeIcon
-                    icon={faAddressCard}
-                    title="Our Physical Address"
-                  /> */}
+              <MapPinIcon className="h-8 w-8 text-[#B22222]" />
             </div>
-            <div className="basis-5/6 my1-3 border1-spacing-3 border1-red-500">
+            <div className="basis-5/6 my1-3 border1-spacing-3 text-base md:text-xl lg:text-2xl">
               <p className="m-auto">Secretary</p>
-              <p className="m-auto">Sri Lanka Society of Queensland.</p>
+              <p className="m-auto">Sri Lanka Society of Queensland Inc.</p>
               <p className="m-auto">PO Box 15099,</p>
               <p className="m-auto">CITY EAST QLD 4002.</p>
             </div>
           </div>
-          <div className="flex flex-col md:flex-row w-[100%] m-auto justify-around text-base md:text-2xl sm:flex1-row items-center">
+          <div className="flex flex-col md:flex-row w-[100%] m-auto justify-around text-base md:text-xl lg:text-2xl sm:flex1-row items-center">
             <div className="px-3 p-3 md:p-0 m-auto">
-              {/* <FontAwesomeIcon
-                    icon={faEnvelope}
-                    title="Our Email address"
-                  /> */}
-              {/* <PhoneIcon className="h-8 w-8 text-[#B22222] " /> */}
               <EnvelopeOpenIcon className="h-8 w-8 text-[#B22222]" />
             </div>
             <div className="basis-5/6 my-3">
@@ -56,21 +44,3 @@ const ContactUs = () => {
 };
 
 export default ContactUs;
-
-//  <div className="flex justify-around w-[100%] min1-w-[130%]">
-//           <section className="pt-10 pb-10 border-5 border-red-700 w1-[100%] overflow1-hidden">
-//             <div className="w-[100%] m1-auto min1-w-[100%] mx-10">
-//               <div className="basis-5/6 my1-3 border-spacing-3 border-red-500">
-//                 <p className="m-auto">Secretary</p>
-//                 <p className="m-auto">Sri Lanka Society of Queensland.</p>
-//                 <p className="m-auto">PO Box 15099,</p>
-//                 <p className="m-auto">CITY EAST QLD 4002.</p>
-//                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio
-//                 eos illo maxime omnis, laudantium tenetur sequi laboriosam animi
-//                 nostrum sunt? Ea eaque ducimus in magnam? Culpa velit aut cumque
-//                 error!
-//               </div>
-//             </div>
-
-//           </section>
-//         </div>

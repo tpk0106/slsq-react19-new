@@ -5,7 +5,7 @@ const AboutUs = () => {
     <div className="">
       <div
         className="max-h-[98%] max-w-[90%] min-w-[40%] m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] 
-                      mt-0 border1-[5px] border1-blue-700 text-[#7F1734] font-semibold"
+                      mt-0 text-[#7F1734] font-semibold"
       >
         <div className="flex-1 text-3xl mx-5 p-[1em]">
           <div className="flex flex-col items-center content-center ">
@@ -14,7 +14,7 @@ const AboutUs = () => {
             </p>
             <p
               id="rules"
-              className="text-base md:text-[20px] lg:text-[30px] mb-5 drop1-shadow-[1px_1px_rgba(0,0,0,1)] text-center"
+              className="text-base md:text-[20px] lg:text-[30px] mb-5 text-center"
             >
               We are a community organisation dedicated to the celebration and
               understanding of Sri Lankan culture within Queensland, Australia.

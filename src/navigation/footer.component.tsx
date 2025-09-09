@@ -14,16 +14,16 @@ const Footer = () => {
   return (
     <>
       <div
-        className="w-[100%] bg-[#470000] text-[#fff] h-[600px] md:h-[400px] bg-cover bg-center 
+        className="w-[100%] bg-[#470000] text-[#fff] h-[655px] md:h-[400px] lg:h-auto 
                       shadow-[inset_0px_5px_15px_-3px_rgba(0,_0,_0,_0.2)]"
       >
-        <div className="flex">
+        <div className="flex flex-col">
           <div className="flex flex-col md:flex-row w-full">
-            <div className="flex flex-col md:flex-row w-[100%] md:w-[70%] md:m-auto">
-              <div className="w-[35%] ml-50 md:w-[30%] m-auto md:ml-[10%] mt-5">
+            <div className="flex flex-col md:flex-row w-[100%] md:w-[70%] md:mt-5">
+              <div className="w-[35%] mt-3 md:mt-0 mx-auto md:w-[30%] m1-auto md:ml-[10%]">
                 <ul
                   id="footer-menu"
-                  className="flex flex-col text1-[1.1em] leading-6 list-none"
+                  className="flex flex-col leading-6 list-none"
                 >
                   {navbarData.map((menu) => {
                     return (
@@ -40,21 +40,26 @@ const Footer = () => {
                   })}
                 </ul>
               </div>
-              <div className="w-[100%] md:w-[70%] m1-auto justify-around text-center my-5 md:my-0">
+              <div className="w-[100%] md:w-[70%] justify-around text-center my-5 md:my-0">
                 <div>
                   &copy; {formatDate()} Sri Lanka Society of Queensland Inc.
                 </div>
-                <div>All rights reserved.</div>
-                <div className="flex items-center">
-                  <div className="flex text1-[#fff] font-1bold items-center text1-center m-auto">
-                    <div>Colombo Time:</div>
-                    <div className="ml-5">{<Clock />}</div>
+                <div>&copy; All rights reserved.</div>
+
+                <div className="flex items-center m-auto">
+                  <div className="flex flex-grow m1-auto">
+                    <div className="flex w-[40%] justify-end md:justify-end md:w-[40%] lg:w-[45%] mr-2 text-[70%] md:text-[100%]">
+                      Colombo Time:
+                    </div>
+                    <div className="flex w-[60%] md:w-[60%] lg:w-[55%] justify-start text-[70%] md:text-[100%]">
+                      {<Clock />}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <hr className="ml-1 mr-1.5 hidden h-100 w-px border-l border-t-0 border-secondary-dark lg:block" />
-            <div className="flex flex-col w-[100%] md:w-[30%] py-5 m-auto text-center">
+            <hr className="ml-1 mr-1.5 hidden h-100 w-px border-l border-t-0 border-secondary-dark" />
+            <div className="flex flex-col w-[100%] md:w-[30%] py-5 text-center">
               <div className="m-auto">
                 <div>
                   <p className="m-auto">Secretary</p>
@@ -69,15 +74,28 @@ const Footer = () => {
                     </p>
                   </div>
 
-                  <div className="mt-20 text-xs">
+                  {/* <div className="mt-10 md:mt-20 lg:mt-30 text-xs"> */}
+                  <div className="mt-2 mb-2 md:mb-0 md:mt-10 text-xs">
                     Developed by Thusith Kathaluwage using react
                     (v19)/typescript.♥️
                   </div>
                   <hr className="mx-5 border-1 border-gray-500" />
                 </div>
+
+                {/* this is a border with elephant display in mobile*/}
+                <div
+                  id="border"
+                  className="flex md:hidden w-[100%] h-[65px]"
+                ></div>
               </div>
             </div>
           </div>
+
+          {/* this is a border with elephant display */}
+          <div
+            id="border"
+            className="hidden md:flex flex-col w-[100%] md:h-[145px] 2xl:h-[130px] xl:h-[175px]"
+          ></div>
         </div>
       </div>
     </>

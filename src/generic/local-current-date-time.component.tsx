@@ -17,8 +17,15 @@ import React, { useEffect, useState } from "react";
 
 /* {currentTime1.toLocaleString("en-US", { timeZone: "Asia/Colombo" })} */
 
+// type format = {
+//   f:string;
+// }
+
+// const Clock = (f: string) => {
 const Clock = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
+  // const [format, setFormat] = useState(f);
+  // const x =f;
 
   useEffect(() => {
     // Set up an interval to update the time every second
@@ -33,6 +40,14 @@ const Clock = () => {
   return (
     <div>
       <div>
+        {/* switch ({format}) {
+          case 't':            
+          {currentTime.toLocaleString("en-AU", { timeZone: "Asia/Colombo" })}
+            break;
+        
+          default:
+            break;
+        } */}
         {currentTime.toLocaleString("en-AU", { timeZone: "Asia/Colombo" })}
       </div>
     </div>

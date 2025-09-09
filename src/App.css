@@ -2,14 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
-@import url(https://fonts.googleapis.com/css?family=Roboto:900|Roboto+Mono:300,400,700);
-/* @import url(main.css); */
+@import url("https://fonts.googleapis.com/css?family=Roboto:900|Roboto+Mono:300,400,700");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bigelow+Rules&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"); */
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Montserrat", "Bigelow", "Roboto", "Nunito", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -41,7 +42,7 @@ footer menu
 .menu-bars {
   position: fixed;
   top: 6rem;
-  right: 2rem;
+  right: 1rem;
   z-index: 50;
   display: inline;
   cursor: pointer;
@@ -57,6 +58,7 @@ footer menu
   margin: 8px 0;
   transition: 0.4s;
 }
+
 /* Rotate first bar */
 .change .bar1 {
   transform: rotate(-45deg) translate(-7px, 8px);
@@ -114,37 +116,29 @@ footer menu
   transform: translateX(0);
 }
 
-/* 
-.hero-full-container .hero-full-wrapper {
-  display: table;
-  width: 100%;
-  height: 100vh;
-  min-height: 100vh;
-}
-.hero-full-container .hero-full-wrapper .text-content {
-  vertical-align: middle;
-  display: table-cell;
-} */
+/* background image display */
 
 @media only screen and (max-width: 374px) {
+  /* For small mobile: */
   #photo-gallery {
-    background: center 50% url("/public/Sunset\ at\ Weligama.jpg");
+    background: center url("/public/beach4-320X664.jpg");
     background-size: cover;
   }
 }
 
 @media only screen and (min-width: 375px) {
-  /* For tablets: */
+  /* For large mobile: */
   #photo-gallery {
-    background: center 50% url("/public/Sunset\ at\ Weligama.jpg");
+    background: center url("/public/beach4-375X664.jpg");
     background-size: cover;
+    /* border: 3px solid yellow; */
   }
 }
 
 @media only screen and (min-width: 600px) {
   /* For tablets: */
   #photo-gallery {
-    background: center 50% url("/public/Sunset\ at\ Weligama.jpg");
+    background: center 50% url("/public/beach4.jpg");
     background-size: cover;
   }
 }
@@ -152,7 +146,7 @@ footer menu
 @media only screen and (min-width: 768px) {
   /* For desktop: */
   #photo-gallery {
-    background: center 70% url("/public/Sunset\ at\ Weligama.jpg");
+    background: center 70% url("/public/beach4.jpg");
     background-size: cover;
   }
 }
@@ -160,29 +154,12 @@ footer menu
 @media only screen and (min-width: 1024px) {
   /* For desktop: */
   #photo-gallery {
-    background: 70% url("/public/Sunset\ at\ Weligama.jpg");
+    background: 70% url("/public/beach4.jpg");
     background-size: cover;
   }
 }
 
-/* 
-@media (min-width: 30em) and (max-width: 50em) {
-  #photo-gallery {
-    background: 50% url("/public/Sunset\ at\ Weligama.jpg");
-  }
-}
-
-@media (610px <= width <= 310px) {
-  #photo-gallery {
-    background: 30% url("/public/Sunset\ at\ Weligama.jpg");
-  }
-}
-
-@media (50em >= width >= 30em) {
-  #photo-gallery {
-    background: 100% url("/public/Sunset\ at\ Weligama.jpg");
-  }
-} */
+/* end background image display */
 
 /* this is used by react PDF */
 /* body { margin: 0; background-color: #525659; font-family: Segoe UI,
@@ -258,3 +235,188 @@ footer menu
   fill: #800000;
   stroke: #800000;
 } */
+
+/* 
+#footer-ribbon {
+  /* background: url("/public/handicrafts-in-sri-lanka-4.jpg"); 
+background: url("/public/ele.png") repeat;
+width: 30%;
+/* height: auto; 
+} */
+
+#poster1 .image-container {
+  display: flex;
+  justify-content: space-between; /* or space-around */
+  align-items: center; /* for vertical alignment if needed */
+  width: fit-content; /* Adjust as needed */
+}
+
+.original-image {
+  /* Optional: Add styling for the original image */
+}
+
+.mirror-image {
+  transform: scaleX(-1);
+}
+
+/* https://www.browserstack.com/guide/ideal-screen-sizes-for-responsive-design */
+/* 
+Common breakpoints:
+
+    320px: Small mobile devices
+    480px:  Larger smartphones
+    768px: Tablets
+    1024px: Small desktops/laptops
+    1280px and above: Large desktops
+*/
+
+/* Mobile */
+/*  360×800 (10.56%)
+    390×844 (6.72%)
+    393×873 (5.49%)
+    412×915 (4.2%)
+    375×812 (3.87%)
+    393×852 (3.83%) 
+*/
+
+@media only screen and (max-width: 374px) {
+  #border {
+    background-image: url("/public/ele.png");
+    background-size: 6% auto;
+    /* background-color: yellow; */
+    /* height: 85px; */
+    overflow: hidden;
+    transform: scaleX(-1);
+    /* margin-top: 0; */
+  }
+}
+@media only screen and (min-width: 375px) {
+  #border {
+    background-image: url("/public/ele.png");
+    background-size: 10.5% auto;
+    /* background-color: cyan; */
+    transform: scaleX(-1);
+    margin-top: 0;
+    /* padding-bottom: 2px; */
+  }
+}
+
+@media only screen and (min-width: 425px) {
+  #border {
+    background-image: url("/public/ele.png");
+    background-size: 6% auto;
+    /* background-color: #1f2; */
+    /* height: 160px; */
+    transform: scaleX(-1);
+    margin-top: 0;
+    /* padding-bottom: 2px; */
+  }
+}
+
+/* tablets */
+/* 
+    768×1024 (17.59%)
+    810×1080 (10.53%)
+    820×1180 (8.33%)
+    800×1280 (7.53%)
+    1280×800 (6.47%)
+    601×962 (3.57%) 
+*/
+
+@media only screen and (min-width: 600px) and (max-width: 820px) {
+  /* For tablets: */
+  #border {
+    background-image: url("/public/ele.png");
+    /* background-size: 12% auto; */
+    /* background-color: red; */
+    height: 120px;
+    margin-top: 0;
+  }
+}
+
+@media only screen and (min-width: 821px) and (max-width: 912px) {
+  /* For tablets: */
+  #border {
+    background-image: url("/public/ele.png");
+    /* background-size: 11% auto; */
+    /* background-color: #ff0066; */
+    /* this entry is added for res 853X1280 not sure it will fail for others */
+    height: 120px;
+    margin-top: 0;
+  }
+}
+
+/* @media only screen and (min-width: 1024px) { */
+@media only screen and (min-width: 913px) and (max-width: 1024px) {
+  /* For tablets: */
+  #border {
+    background-image: url("/public/ele.png");
+    /* background-size: 27% auto; */
+    overflow: hidden;
+    /* background-color: green; */
+    /* height: 235px; */
+    height: 170px;
+    margin-top: 0;
+  }
+}
+
+/* @media only screen and (min-width: 1025px) and (max-width: 1440px) { */
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
+  /* For laptop: */
+  #border {
+    background-image: url("/public/ele.png");
+    /* background-size: 8% auto; */
+    height: 235px;
+    height: 200px;
+    overflow: hidden;
+    /* background-color: pink; */
+  }
+}
+
+@media only screen and (min-width: 1441px) and (max-width: 2560px) {
+  /* For tablets: */
+  #border {
+    background-image: url("/public/ele.png");
+    /* background-size: 18% auto; */
+    height: 410px;
+    height: 350px;
+    /* background-color: orange; */
+  }
+}
+
+/* desktop */
+/* 
+    1920×1080 (24.27%)
+    1536×864 (11.13%)
+    1366×768 (10.85%)
+    1280×720 (5.82%)
+    1440×900 (4.18%)
+    2560×1440 (3.29%)
+*/
+
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+  /* For laptop: */
+  #border {
+    background-image: url("/public/ele.png");
+    /* background-size: 10.5% auto; */
+    overflow: hidden;
+    /* background-color: #565656; */
+    margin-top: 0;
+  }
+}
+
+@media only screen and (max-width: 2560px) {
+  /* For laptop: */
+  #border {
+    background-image: url("/public/ele.png");
+    background-size: 20% auto;
+    overflow: hidden;
+    /* background-color: ##f5f5; */
+    margin-top: 0;
+  }
+}
+
+#poster {
+  background-color: #eed3cc;
+  background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox='0 0 84 84' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f6f6f6' fill-opacity='0.4'%3E%3Cpath d='M84 23c-4.417 0-8-3.584-8-7.998V8h-7.002C64.58 8 61 4.42 61 0H23c0 4.417-3.584 8-7.998 8H8v7.002C8 19.42 4.42 23 0 23v38c4.417 0 8 3.584 8 7.998V76h7.002C19.42 76 23 79.58 23 84h38c0-4.417 3.584-8 7.998-8H76v-7.002C76 64.58 79.58 61 84 61V23zM59.05 83H43V66.95c5.054-.5 9-4.764 9-9.948V52h5.002c5.18 0 9.446-3.947 9.95-9H83v16.05c-5.054.5-9 4.764-9 9.948V74h-5.002c-5.18 0-9.446 3.947-9.95 9zm-34.1 0H41V66.95c-5.053-.502-9-4.768-9-9.948V52h-5.002c-5.184 0-9.447-3.946-9.95-9H1v16.05c5.053.502 9 4.768 9 9.948V74h5.002c5.184 0 9.447 3.946 9.95 9zm0-82H41v16.05c-5.054.5-9 4.764-9 9.948V32h-5.002c-5.18 0-9.446 3.947-9.95 9H1V24.95c5.054-.5 9-4.764 9-9.948V10h5.002c5.18 0 9.446-3.947 9.95-9zm34.1 0H43v16.05c5.053.502 9 4.768 9 9.948V32h5.002c5.184 0 9.447 3.946 9.95 9H83V24.95c-5.053-.502-9-4.768-9-9.948V10h-5.002c-5.184 0-9.447-3.946-9.95-9zM50 50v7.002C50 61.42 46.42 65 42 65c-4.417 0-8-3.584-8-7.998V50h-7.002C22.58 50 19 46.42 19 42c0-4.417 3.584-8 7.998-8H34v-7.002C34 22.58 37.58 19 42 19c4.417 0 8 3.584 8 7.998V34h7.002C61.42 34 65 37.58 65 42c0 4.417-3.584 8-7.998 8H50z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}

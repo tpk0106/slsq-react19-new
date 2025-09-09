@@ -19,9 +19,11 @@ import {
   DancingSchoolOpeningCeremony2020,
 } from "../data/images";
 import Button from "../generic/button.component";
+import { ImageSets } from "../data/image-sets";
 
 let imagesSet: any;
 
+// const infoSymbol = "\u2139"; // Unicode Information Source (U+2139)
 const PhotoGallery = () => {
   const [showGallery, setShowGallery] = useState(false);
 
@@ -100,142 +102,18 @@ const PhotoGallery = () => {
           id="photo-gallery"
           className="container m-auto w-[100%] mt-5 mb-10"
         >
-          <div className="flex flex-col text-center py-5">
+          <div className="flex flex-col text-center py-5 text-base md:text-[20px] lg:text-[30px]">
             <div>
-              <div>
-                <Button
-                  onClick={(e) => handleClick(e)}
-                  icon={null}
-                  caption="Sinhala And Tamil New Year 2021"
-                  classname="text-base md:text-[20px] lg:text-[30px] mb-5 drop-shadow1-[1px_1px_rgba(0,0,0,1)] hover:drop-shadow1-[2px_2px_rgba(0,0,0,.5)]  hover:cursor-pointer"
-                />
-              </div>
-              <div>
-                <Button
-                  onClick={(e) => handleClick(e)}
-                  icon={null}
-                  caption="Members And Friends Lunch 2020"
-                  classname="text-base md:text-[20px] lg:text-[30px] mb-5 drop-shadow1-[1px_1px_rgba(0,0,0,1)] hover:drop-shadow1-[2px_2px_rgba(0,0,0,.5)]  hover:cursor-pointer"
-                />
-              </div>
-              <div>
-                <Button
-                  onClick={(e) => handleClick(e)}
-                  icon={null}
-                  caption="Dance School Opening Ceremony 2020"
-                  classname="text-base md:text-[20px] lg:text-[30px] mb-5 drop-shadow1-[1px_1px_rgba(0,0,0,1)] hover:drop-shadow1-[2px_2px_rgba(0,0,0,.5)]  hover:cursor-pointer"
-                />
-              </div>
-
-              <div>
-                <Button
-                  onClick={(e) => handleClick(e)}
-                  icon={null}
-                  caption="Founders Day Celebrations 2019"
-                  classname="text-base md:text-[20px] lg:text-[30px] mb-5 text-white drop-shadow1-[1px_1px_rgba(0,0,0,1)] hover:drop-shadow1-[2px_2px_rgba(0,0,0,.5)]  hover:cursor-pointer"
-                />
-              </div>
-
-              <div>
-                <Button
-                  onClick={(e) => handleClick(e)}
-                  icon={null}
-                  caption="Sri Lankan New Year Cultural Concert 2018"
-                  classname="text-base md:text-[20px] lg:text-[30px] mb-5 text-white drop-shadow1-[1px_1px_rgba(0,0,0,1)] hover:drop-shadow1-[2px_2px_rgba(0,0,0,.5)] hover:cursor-pointer"
-                />
-              </div>
-
-              <div>
-                <Button
-                  onClick={(e) => handleClick(e)}
-                  icon={null}
-                  caption="National Dance Troupe 2017"
-                  classname="text-base md:text-[20px] lg:text-[30px] mb-5 text-white drop-shadow1-[1px_1px_rgba(0,0,0,1)] hover:drop-shadow1-[2px_2px_rgba(0,0,0,.5)] hover:cursor-pointer"
-                />
-              </div>
-
-              <div>
-                <Button
-                  onClick={(e) => handleClick(e)}
-                  icon={null}
-                  caption="Book Launch -Dr Nimal Sedera 2017"
-                  classname="text-base md:text-[20px] lg:text-[30px] mb-5 text-white drop-shadow1-[1px_1px_rgba(0,0,0,1)] hover:drop-shadow1-[2px_2px_rgba(0,0,0,.5)] hover:cursor-pointer"
-                />
-              </div>
-
-              <div>
-                <Button
-                  onClick={(e) => handleClick(e)}
-                  icon={null}
-                  caption="Sri Lankan New Year Cultural Concert 2017"
-                  classname="text-base md:text-[20px] lg:text-[30px] mb-5 text-white drop-shadow1-[1px_1px_rgba(0,0,0,1)] hover:drop-shadow1-[2px_2px_rgba(0,0,0,.5)] hover:cursor-pointer"
-                />
-              </div>
-
-              <div>
-                <Button
-                  onClick={(e) => handleClick(e)}
-                  icon={null}
-                  caption="Sri Lankan New Year Cultural Concert 2016"
-                  classname="text-base md:text-[20px] lg:text-[30px] mb-5 text-white drop-shadow1-[1px_1px_rgba(0,0,0,1)] hover:drop-shadow1-[2px_2px_rgba(0,0,0,.5)] hover:cursor-pointer"
-                />
-              </div>
-
-              <div>
-                <Button
-                  onClick={(e) => handleClick(e)}
-                  icon={null}
-                  caption={
-                    "SLSQ Invited to Bhutan King’s 41st Birthday Celebrations"
-                  }
-                  classname="text-base md:text-[20px] lg:text-[30px] mb-5 text-white drop-shadow1-[1px_1px_rgba(0,0,0,1)] hover:drop-shadow1-[2px_2px_rgba(0,0,0,.5)] hover:cursor-pointer"
-                />
-              </div>
-
-              <div>
-                <Button
-                  onClick={(e) => handleClick(e)}
-                  icon={null}
-                  caption="Sri Lankan New Year Cultural Concert 2015"
-                  classname="text-base md:text-[20px] lg:text-[30px] mb-5 text-white drop-shadow1-[1px_1px_rgba(0,0,0,1)] hover:drop-shadow1-[2px_2px_rgba(0,0,0,.5)] hover:cursor-pointer"
-                />
-              </div>
-
-              <div>
-                <Button
-                  onClick={(e) => handleClick(e)}
-                  icon={null}
-                  caption="Clean Water Appeal"
-                  classname="text-base md:text-[20px] lg:text-[30px] mb-5 text-white drop-shadow1-[1px_1px_rgba(0,0,0,1)] hover:drop-shadow1-[2px_2px_rgba(0,0,0,.5)] hover:cursor-pointer"
-                />
-              </div>
-
-              <div>
-                <Button
-                  onClick={(e) => handleClick(e)}
-                  icon={null}
-                  caption="Members and Friends Get-Together"
-                  classname="text-base md:text-[20px] lg:text-[30px] mb-5 text-white drop-shadow1-[1px_1px_rgba(0,0,0,1)] hover:drop-shadow1-[2px_2px_rgba(0,0,0,.5)] hover:cursor-pointer"
-                />
-              </div>
-
-              <div>
-                <Button
-                  onClick={(e) => handleClick(e)}
-                  icon={null}
-                  caption="Talk by Tina Faulk"
-                  classname="text-base md:text-[20px] lg:text-[30px] mb-5 text-white drop-shadow1-[1px_1px_rgba(0,0,0,1)] hover:drop-shadow1-[2px_2px_rgba(0,0,0,.5)] hover:cursor-pointer"
-                />
-              </div>
-
-              <div>
-                <Button
-                  onClick={(e) => handleClick(e)}
-                  icon={null}
-                  caption="Sri Lankan New Year Cultural Concert 2014"
-                  classname="text-base md:text-[20px] lg:text-[30px] mb-5 text-white drop-shadow1-[1px_1px_rgba(0,0,0,1)] hover:drop-shadow1-[2px_2px_rgba(0,0,0,.5)] hover:cursor-pointer"
-                />
-              </div>
+              {ImageSets.map((caption) => {
+                return (
+                  <Button
+                    onClick={(e) => handleClick(e)}
+                    icon={null}
+                    caption={caption.caption}
+                    classname="mb-5 font-bold text-white shadow-[0px_0px_rgba(0,0,0,1)] hover:drop-shadow-[2px_2px_rgba(0,0,0,.5)]  hover:cursor-pointer"
+                  />
+                );
+              })}
             </div>
           </div>
           <div>

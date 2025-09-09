@@ -1,0 +1,20 @@
+export const ImageSets = [
+  { caption: "Sinhala And Tamil New Year 2021" },
+  { caption: "Members And Friends Lunch 2020" },
+  { caption: "Dance School Opening Ceremony 2020" },
+  { caption: "Founders Day Celebrations 2019" },
+  { caption: "Sri Lankan New Year Cultural Concert 2018" },
+  {
+    caption: "SLSQ Invited to Bhutan King’s 41st Birthday Celebrations",
+  },
+  { caption: "Book Launch -Dr Nimal Sedera 2017" },
+  { caption: "National Dance Troupe 2017" },
+  { caption: "Sri Lankan New Year Cultural Concert 2017" },
+  { caption: "Sri Lankan New Year Cultural Concert 2016" },
+  { caption: "Talk by Tina Faulk" },
+  { caption: "Clean Water Appeal" },
+  { caption: "Members and Friends Get-Together" },
+  { caption: "Sri Lankan New Year Cultural Concert 2015" },
+  { caption: "Sri Lankan New Year Cultural Concert 2014" },
+  // { caption: `${"SLSQ Invited to Bhutan King’s 41"}` + "\uFB06" + `${"Birthday Celebrations"}`,
+];
