@@ -41,11 +41,34 @@ footer menu
 
 .menu-bars {
   position: fixed;
-  top: 6rem;
+  top: 5rem;
   right: 1rem;
   z-index: 50;
   display: inline;
   cursor: pointer;
+  /* border: 1px solid white; */
+  /* padding: 2px; */
+  /* border-radius: 10px; */
+  /* margin: 0 0 0 5px; */
+}
+
+/* For mobile: width 664 (mobile horizontal display) */
+@media only screen and (min-width: 667px) {
+  .menu-bars {
+    position: fixed;
+    top: 0rem;
+    right: 1rem;
+    z-index: 50;
+    /* display: block; */
+    display: inline;
+    cursor: pointer;
+  }
+}
+/* 425px */
+@media only screen and (min-width: 425px) {
+  .menu-bars {
+    top: 6rem;
+  }
 }
 
 .bar1,
@@ -330,6 +353,15 @@ Common breakpoints:
     /* background-size: 12% auto; */
     /* background-color: red; */
     height: 120px;
+    margin-top: 0;
+  }
+}
+
+/* this is for mobile horizontal width 664px */
+@media only screen and (min-width: 664px) and (max-width: 767px) {
+  #border {
+    background-image: url("/public/ele.png");
+    height: 90px;
     margin-top: 0;
   }
 }

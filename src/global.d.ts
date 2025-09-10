@@ -1,5 +1,6 @@
-declare module '*.pdf';
-declare module '*.doc';
-declare module '*.jpg';
-declare module '*.png';
-declare module '*.jpeg';
+declare module "*.pdf";
+declare module "*.doc";
+declare module "*.jpg";
+declare module "*.png";
+declare module "*.jpeg";
+declare module "*.svg";

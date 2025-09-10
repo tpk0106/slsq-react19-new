@@ -9,6 +9,8 @@ import {
   PhoneIcon,
 } from "@heroicons/react/24/outline";
 
+import Logo from "../generic/logo.component";
+
 // import SVGComponent from "../generic/svg.component";
 
 // import { ReactComponent as myComp } from "/public/lisbon.svg";
@@ -61,24 +63,27 @@ const Header = () => {
         </div>
 
         {/* main menu */}
+        {/*  
+          min-[540px]:min-h-[27%] for px 540 mobile 540X720 Surface Pro
+          min-[664px]:min-h-[37%] xxs:min-h-[170px] (IPhone SE)       
+        */}
 
         <nav
           id="main"
           className="rounded-lg 1shadow-lg overflow-hidden p-2 bg-[#7F1734] border-stone-200 
           shadow-stone-950/5 sticky top-0 mx-auto h-[20%] md:h-[25%] max-w-full 
-          bg-cover bg-center shadow-[0px_10px_20px_0px_rgba(170,_83,_64,_0.7)] min-h-[200px] border-[1px]"
+          bg-cover bg-center shadow-[0px_10px_20px_0px_rgba(170,_83,_64,_0.7)] 
+          min-[664px]:min-h-[37%] xxs:min-h-[170px]
+          md:min-h-[200px] border-[1px] 
+          min-[540px]:min-h-[27%]"
         >
           <div className="hidden md:flex">
             <div className="flex w-[100%] border1-4 border1-blue-500 bg-white">
               {/* logo column sm:10%, md:10%, lg:15%, XL: 20%, 2xl:15% */}
               <div className="hidden md:flex w-[10%] md:w-[15%] lg:w-[15%] xl:w-[15%] 2xl:w-[18%] border1-4 border1-cyan-500 mt-2 p-1">
                 <div className="flex border1-4 border1-red-600 w-[100%] mx-auto">
-                  <Link to="/" className="">
-                    <img
-                      src={`${process.env.PUBLIC_URL}SRI-LANKA-SOCIETY-OF-QUEENSLAND-INC.png`}
-                      alt="Sri Lanka Society of Queensland Inc logo"
-                      className="md:w-[100%] auto lg:w-[100%] auto xl:w-[100%] auto 2xl:w-[65%] auto mx-auto"
-                    />
+                  <Link to="/">
+                    <Logo />
                   </Link>
                 </div>
               </div>
@@ -191,14 +196,17 @@ const Header = () => {
           </div>
 
           {/* mobile hedader with address details and logo */}
-          <div className="flex w-[90%] flex-col md:hidden mx-auto mb-2">
+          <div className="flex w-[90%] flex-col min-[664px]:hidden mx-auto mb-2">
             <div className="flex border1-4 border1-red-600 w-[100%] mx-auto bg-white">
               <Link to="/" className="">
-                <img
+                <div className="w-[15%] auto mx-auto">
+                  <Logo />
+                </div>
+                {/* <img
                   src={`${process.env.PUBLIC_URL}SRI-LANKA-SOCIETY-OF-QUEENSLAND-INC.png`}
                   alt="Sri Lanka Society of Queensland Inc logo"
                   className="w-[20%] auto mx-auto"
-                />
+                /> */}
               </Link>
             </div>
 
@@ -244,7 +252,72 @@ const Header = () => {
             >
               <div className="flex w-[100%] xxs:text-[50%] text-[70%]">
                 <div className="flex w-[40%]  justify-end">Colombo Time:</div>
-                <div className="flex-grow w-[60%] ">{<Clock />}</div>
+                <div className="flex-grow w-[60%]">{<Clock />}</div>
+              </div>
+            </div>
+          </div>
+
+          {/* mobile hedader with address details and logo 
+              mobile horizontal display
+              664px width: (667X375 resolution)
+              hidden for all mobile (from xxs) and above
+          */}
+          <div className="w-[90%] min-[664px]:flex flex-row xxs:hidden md:hidden mx-auto mb-2 h-[100%]">
+            <div className="flex w-[40%] m-auto bg-white p-1">
+              <Link to="/" className="">
+                <div className="w-[40%] auto mx-auto">
+                  <Logo />
+                </div>
+                {/* <img
+                  src={`${process.env.PUBLIC_URL}SRI-LANKA-SOCIETY-OF-QUEENSLAND-INC.png`}
+                  alt="Sri Lanka Society of Queensland Inc logo"
+                  className="w-[35%] auto m-auto"
+                /> */}
+              </Link>
+            </div>
+
+            <div className="w-[60%] bg-[#7F1734] py-2 border1-4 border1-yellow-300 m-auto">
+              <div className="flex flex-col w-[80%] gap-x-1 text-[#000] border1-4 border1-yellow-500 text-[0.7em] m-auto gap-y-1">
+                <div
+                  className="flex rounded-sm shadow-sm justify-center text-center border-1 border-white 
+                              bg-[#fff] items-center xxs:mx-2 xs:mx-0"
+                >
+                  <div>
+                    <div>
+                      <PhoneIcon className="h-4 w-4 justify-start mr-3 text-[#B22222]" />
+                    </div>
+                  </div>
+                  <div>07 1234 5678</div>
+                </div>
+                <div
+                  className="flex rounded-sm shadow-md justify-center text-center border-1 
+                              border-white bg-[#fff] items-center xxs:mx-2 xs:mx-0"
+                >
+                  <div>
+                    <EnvelopeOpenIcon className="h-4 w-4 mr-3 text-[#B22222]" />
+                  </div>
+                  <div>secretary@srilankansqld.org</div>
+                </div>
+                <div
+                  className="flex rounded-sm shadow-md justify-center text-center border-1 
+                              border-white bg-[#fff] items-center xxs:mx-2 xs:mx-0"
+                >
+                  <div>
+                    <div>
+                      <MapPinIcon className="h-4 w-4 mr-3 text-[#B22222]" />
+                    </div>
+                  </div>
+                  <div>CITY EAST QLD, Queensland, AUSTRALIA</div>
+                </div>
+              </div>
+              <div
+                className="flex w-[80%] rounded-sm shadow-md justify-center text-center mx-auto
+                                  border-1 border-white bg-[#fff] font-bold border1-4 border1-red-600 pt-1 mt-1"
+              >
+                <div className="flex w-[100%] xxs:text-[50%] text-[70%]">
+                  <div className="flex w-[40%]  justify-end">Colombo Time:</div>
+                  <div className="flex-grow w-[60%] ">{<Clock />}</div>
+                </div>
               </div>
             </div>
           </div>
