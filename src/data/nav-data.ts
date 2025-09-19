@@ -6,8 +6,16 @@ import PhotoGallery from "../photo-gallery/photo-gallery.component";
 import PastEvents from "../past-events/past-events.component";
 import UpComingEvents from "../upcoming-events/upcoming-events.component";
 import NoticeBoard from "../notice-board/notice-board.component";
+import Home from "../home.component";
 
 export const navbarData = [
+  {
+    routerLink: "home",
+    element: Home,
+    icon: "",
+    label: "Home",
+    subMenus: null,
+  },
   {
     routerLink: "about-us",
     element: AboutUs,

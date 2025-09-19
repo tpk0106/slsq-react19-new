@@ -46,20 +46,31 @@ footer menu
   z-index: 50;
   display: inline;
   cursor: pointer;
-  /* border: 1px solid white; */
-  /* padding: 2px; */
-  /* border-radius: 10px; */
-  /* margin: 0 0 0 5px; */
+}
+
+@media only screen and (min-width: 667px) {
+  .menu-bars1 {
+    position: relative;
+    /* top: 0rem; */
+    /* top: 6rem;  */
+    /* bottom: 10rem; */
+    /* top: 4rem; */
+    /* background-color: yellow; */
+    right: -38rem;
+    z-index: 50;
+    display: inline;
+    cursor: pointer;
+  }
 }
 
 /* For mobile: width 664 (mobile horizontal display) */
 @media only screen and (min-width: 667px) {
   .menu-bars {
     position: fixed;
-    top: 0rem;
+    /* top: 0rem; */
+    top: 3rem;
     right: 1rem;
-    z-index: 50;
-    /* display: block; */
+    z-index: 100;
     display: inline;
     cursor: pointer;
   }
@@ -231,6 +242,16 @@ footer menu
   color: white;
 }
 
+/* splide carousal */
+/* 
+.splide__slide img {
+  object-fit: cover;
+  
+  width: 100%;
+  height: 100%;
+  
+} */
+
 #splide .splide__arrows {
   color: #800000 !important;
   /* foreground: yellow; */
@@ -244,14 +265,36 @@ footer menu
 
 /* If the arrow is an SVG, you might need to target its stroke or fill */
 #splide .splide__arrow svg {
-  fill: #800000; /* Example: Blue color for the SVG fill */
-  stroke: #800000; /* Example: Green color for the SVG stroke */
+  fill: #800000; /* Example:  color for the SVG fill */
+  stroke: #800000; /* Example: color for the SVG stroke */
 }
 
+#splide .splide__progress__bar {
+  background-color: #800000;
+  color: #000;
+}
+
+#splide .splide__toggle__play,
+#splide .splide__toggle__pause {
+  color: #fff;
+  border: 1px #fff;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #800000;
+  box-shadow: 0px 10px 20px 0px rgba(000, 10, 10, 0.15);
+}
+
+#splide .splide__toggle__play:hover,
+#splide .splide__toggle__pause:hover {
+  color: #800000;
+  background-color: #fff;
+}
 /* To change the background color of the arrow button (if applicable) */
 /* Example: Yellow background */
 /* .splide__arrow {
-  background-color: #ffff00; 
+  background-color: #ffff00;
 }
 
 #splide .splide__track .splide_list .splide_slide {
@@ -433,6 +476,7 @@ Common breakpoints:
     /* background-size: 10.5% auto; */
     overflow: hidden;
     /* background-color: #565656; */
+
     margin-top: 0;
   }
 }
@@ -448,7 +492,24 @@ Common breakpoints:
   }
 }
 
-#poster {
+#poster1 {
   background-color: #eed3cc;
   background-image: url("data:image/svg+xml,%3Csvg width='84' height='84' viewBox='0 0 84 84' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f6f6f6' fill-opacity='0.4'%3E%3Cpath d='M84 23c-4.417 0-8-3.584-8-7.998V8h-7.002C64.58 8 61 4.42 61 0H23c0 4.417-3.584 8-7.998 8H8v7.002C8 19.42 4.42 23 0 23v38c4.417 0 8 3.584 8 7.998V76h7.002C19.42 76 23 79.58 23 84h38c0-4.417 3.584-8 7.998-8H76v-7.002C76 64.58 79.58 61 84 61V23zM59.05 83H43V66.95c5.054-.5 9-4.764 9-9.948V52h5.002c5.18 0 9.446-3.947 9.95-9H83v16.05c-5.054.5-9 4.764-9 9.948V74h-5.002c-5.18 0-9.446 3.947-9.95 9zm-34.1 0H41V66.95c-5.053-.502-9-4.768-9-9.948V52h-5.002c-5.184 0-9.447-3.946-9.95-9H1v16.05c5.053.502 9 4.768 9 9.948V74h5.002c5.184 0 9.447 3.946 9.95 9zm0-82H41v16.05c-5.054.5-9 4.764-9 9.948V32h-5.002c-5.18 0-9.446 3.947-9.95 9H1V24.95c5.054-.5 9-4.764 9-9.948V10h5.002c5.18 0 9.446-3.947 9.95-9zm34.1 0H43v16.05c5.053.502 9 4.768 9 9.948V32h5.002c5.184 0 9.447 3.946 9.95 9H83V24.95c-5.053-.502-9-4.768-9-9.948V10h-5.002c-5.184 0-9.447-3.946-9.95-9zM50 50v7.002C50 61.42 46.42 65 42 65c-4.417 0-8-3.584-8-7.998V50h-7.002C22.58 50 19 46.42 19 42c0-4.417 3.584-8 7.998-8H34v-7.002C34 22.58 37.58 19 42 19c4.417 0 8 3.584 8 7.998V34h7.002C61.42 34 65 37.58 65 42c0 4.417-3.584 8-7.998 8H50z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
+
+#poster {
+  /* width: 50%; */
+  /* height: 400px; */
+  /* background-color: #eed3cc; */
+  background-image: url("./assets/images/liyawela.png");
+  background-size: 15%;
+  /* background-position: top left; */
+  transform: scaleX(-1);
+  /* opacity: 0.7; */
+}
+
+/* #national-flower {
+  background: center url("./assets/images/national-flower.jpg");
+  background-size: cover;
+  opacity: 0.4;
+} */

@@ -1,6 +1,3 @@
-// import React, { useEffect, useRef } from "react";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-
 // Default theme
 import "@splidejs/react-splide/css";
 
@@ -12,60 +9,30 @@ import "@splidejs/react-splide/css/sea-green";
 import "@splidejs/react-splide/css/core";
 import { Link } from "react-router-dom";
 
-// import beach2 from "./assets/images/beach2.jpg";
-// import beach3 from "./assets/images/beach3.jpg";
-// import beach4 from "./assets/images/beach4.jpg";
-// import beach5 from "./assets/images/beach5.jpg";
-// import beach6 from "./assets/images/beach6.jpg";
-// import sigiriya from "./assets/images/sigiriya.jpg";
-// import elephant from "./assets/images/elephant.jpg";
-// import lotus from "./assets/images/lotus.jpg";
-// import nineArchBridge from "./assets/images/nine-arch-bridge.jpg";
-// import { Link } from "react-router-dom";
-// import train from "./assets/images/train.jpg";
-// import bus from "./assets/images/bus.jpg";
-// import peacock from "./assets/images/peacock.jpg";
-import poster1 from "./assets/images/IMG-20250823-WA0009.jpg";
+import poster_sankathana from "./assets/images/IMG-20250823-WA0009.jpg";
+
+import Carousal from "./generic/carousal.component";
 
 function displayInfo() {
   const e = document.getElementById("info");
   e?.classList.toggle("hidden");
 }
 
+const info = document.getElementById("info");
+
+info?.addEventListener("scroll", function () {
+  console.log("scrolling main:", info);
+  console.log("scrolling main");
+});
+
 const Home = () => {
-  // const splide = new Splide(".splide");
-  // const inputRef = useRef(splide);
-  // new Splide("#splide", {
-  //   classes: {
-  //     pagination: "splide__pagination your-class-pagination",
-  //     page: "splide__pagination__page your-class-page",
-  //   },
-  // });
-
-  // new Splide("splide", {
-  //   type: "loop",
-  //   height: "9rem",
-  //   perPage: 2,
-  //   breakpoints: {
-  //     640: {
-  //       height: "6rem",
-  //     },
-  //   },
-  // });
-
-  // useEffect(() => {
-  //   // useRef();
-  //   // if (inputRef.current) {
-  //   //   console.log(inputRef.current.splide.length);
-  //   // }
-  // });
-
   return (
     <>
       <div
         id="info"
-        className="w-[100%] md:w-[70%] min-h-[200px] md:min-h-[300px] hidden relative top-30 left-30 m-auto rounded-[1em] border-1 
-        border-[#000] shadow-[0px_10px_20px_0px_rgba(000,_10,_10,_0.15)] opacity-100 z-50 bg-[#800000] text-white"
+        className="w-[100%] md:w-[70%] min-h-[200px] md:min-h-[300px] hidden relative top-30 left-30 
+                  m-auto rounded-[1em] border-1 border-[#000] 
+                  shadow-[0px_10px_20px_0px_rgba(000,_10,_10,_0.15)] opacity-100 z-50 bg-[#800000] text-white"
       >
         <div className="px-5 py-5">
           <a href="##" onClick={() => displayInfo()}>
@@ -110,147 +77,101 @@ const Home = () => {
           <div className="flex m-auto w-[100%]">
             <div className="flex justify-around">
               <section className="pb-10">
-                <div className="w-[100%] m-auto sm:text-[1em] md:text-[1.5em] lg:text-[2em] px-10 sm:leading-relaxed lg:leading-loose text-center font-roboto">
-                  {/*<div className="mt-0">
-                    <div
-                      id="splide"
-                      className="splide m-auto w-[60%] h-[40%] md:w-[80%] md:h-[30%]"
-                    >
-                      <Splide
-                        aria-label="SLSQ"
-                        // ref={inputRef}
-                        options={{
-                          rewind: true,
-                          width: 1700,
-                          // gap: "1rem",
-                          type: "loop",
-                          wheelMinThreshold: 100,
-                          autoplay: true,
-                          pauseOnHover: true,
-                          resetProgress: false,
-                          height: "40rem",
-                          mediaQuery: "min",
-                        }}
-                        // onArrowsMounted={(splide, prev, next) => {
-                        //   console.log(prev, next);
-                        // }}
-                      >
-                        <SplideSlide>
-                          <img
-                            src={poster1}
-                            alt="Poster"
-                            className="w-[40%] m-auto"
-                          />
-                        </SplideSlide>
-                        <SplideSlide>
-                          <img
-                            src={beach2}
-                            alt="Beach 2"
-                            className="w-[40%] m-auto"
-                          />
-                        </SplideSlide>
-                        <SplideSlide>
-                          <img
-                            src={beach3}
-                            alt="Beach 3"
-                            className="w-[40%] m-auto"
-                          />
-                        </SplideSlide>
-                        <SplideSlide>
-                          <img
-                            src={beach4}
-                            alt="Beach 4"
-                            className="w-[100%] m-auto"
-                          />
-                        </SplideSlide>
-                        <SplideSlide>
-                          <img
-                            src={beach5}
-                            alt="Beach 5"
-                            className="w-[80%] m-auto"
-                          />
-                        </SplideSlide>
-                        <SplideSlide>
-                          <img
-                            src={beach6}
-                            alt="Beach 6"
-                            className="w-[40%] m-auto"
-                          />
-                        </SplideSlide>
-                        <SplideSlide>
-                          <img
-                            src={train}
-                            alt="Train"
-                            className="w-[50%] m-auto"
-                          />
-                        </SplideSlide>
-                        <SplideSlide>
-                          <img src={lotus} alt="Lotus" />
-                        </SplideSlide>
-                        <SplideSlide>
-                          <img src={bus} alt="bus" className="w-[90%] m-auto" />
-                        </SplideSlide>
-                        <SplideSlide>
-                          <img
-                            src={peacock}
-                            alt="Peacock"
-                            className="w-[70%] m-auto"
-                          />
-                        </SplideSlide>
-                        <SplideSlide>
-                          <img src={lotus} alt="Lotus" />
-                        </SplideSlide>
-                        <SplideSlide>
-                          <img
-                            src={elephant}
-                            alt="Elephant"
-                            className="w-[50%] m-auto"
-                          />
-                        </SplideSlide>
-                        <SplideSlide>
-                          <img src={nineArchBridge} alt="Nine Arch Bridge" />
-                        </SplideSlide>
-                        <SplideSlide>
-                          <img src={sigiriya} alt="Sigiriya" />
-                        </SplideSlide>
-                      </Splide>
-                    </div>
-                  </div> */}
+                <div
+                  className="w-[100%] m-auto 
+                                sm:text1-[1em] 
+                                md:text1-[1.5em] 
+                                lg:text1-[2em]
+                                xl:text1-[2em] 
+                                2xl:text1-[2.1em]
+                                px-10 sm:leading-relaxed lg:leading1-loose text-center"
+                >
                   <div className="w-[100%] m-auto image-container" id="poster">
                     <div className="w-[80%] md:w-[60%] lg:w-[40%] m-auto">
                       <Link to={"/"}>
                         <img
-                          src={poster1}
+                          src={poster_sankathana}
                           alt="Poster"
-                          className="w-[100%] rounded-[1em] border-2 border-white shadow-[0px_10px_20px_0px_rgba(000,_10,_10,_0.15)] 
-                                       hover:opacity1-80 hover:scale-[0.95] duration-300"
+                          className="w-[100%] rounded-[1em] border-2 border-white 
+                                      shadow-[0px_10px_20px_0px_rgba(000,_10,_10,_0.15)] scale-x-[-1]
+                                       hover:scale-[0.95] 
+                                       hover:scale-x-[-1.1] 
+                                       hover:duration-300 
+                                       hover:opacity-100"
                           // onClick={() => displayInfo()}
                         />
                       </Link>
                     </div>
                   </div>
 
-                  <div className="sm:text-body-laptop md:text-[2.1em] lg:text-[2.3em] pt-10 pb-10 text-center">
-                    Welcome! ආයුබෝවන් , வணக்கம், اَلسَّلامُ عَلَيْكُم and G’day
-                  </div>
-                  <div className="white-text-container">
-                    <div>
-                      <div
-                        className="text-content bg1-[url('/public/69-694072_roses-rose-pinkroses-pink-flowers-flower-floral-circle.png')] 
-                        bg1-[url('/public/beach6.jpg')] bg-no-repeat bg-contain bg-center"
-                      >
-                        This is the official website of the Sri Lanka Society of
-                        Queensland Incorporated. While Sri Lanka, jewel of the
-                        Indian Ocean, may be far from where we live, it shall
-                        always be in our hearts as a land of rich rainforests,
-                        bountiful tea plantations and endless beaches. This
-                        website serves as virtual point of reference to the
-                        Society and all its activities as well as a portal to
-                        upcoming events and community announcements. <br />
-                        <br />
-                        Please feel free to browse at your leisure. Feedback on
-                        this website is welcome.
+                  <div className="flex-col w-full">
+                    <div className="flex flex-col md:flex-row w-full">
+                      <div className="w-[100%] md:w-[70%] md1:w-full">
+                        <Carousal />
                       </div>
+
+                      <div className="w-[100%] md:w-[30%] flex flex-col font-roboto mt-10">
+                        <div
+                          className="sm:text-body-laptop 
+                                     md:text-[1.0em] 
+                                     lg:text-[1.8em] 
+                                     xl:text-[2.2em] 
+                                     2xl:text-[2.5em] 
+                                     text-center 
+                          drop-shadow-[2px_2px_rgba(255,255,255,.5)] p-4"
+                          data-aos="flip-left"
+                        >
+                          Welcome! <br /> ආයුබෝවන්, <br /> வணக்கம், <br />
+                          اَلسَّلامُ عَلَيْكُم <br /> and G’day
+                        </div>
+                        <div
+                          className="font-roboto 
+                                     lg:text-[1.5em] 
+                                     xl:text-[1.8em] 
+                                     2xl:text-[2.2em]"
+                        >
+                          <div>
+                            <div className="text-content drop-shadow-[2px_2px_rgba(255,255,255,.5)] text-center p-4">
+                              This is the official website of the Sri Lanka
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      className="drop-shadow-[2px_2px_rgba(255,255,255,.5)] font-roboto text-center p-4
+                                 lg:text-[1.5em]
+                                 xl:text-[1.8em]
+                                 2xl:text-[2.2em]"
+                    >
+                      <span className=" pl-2 text-[175%] font-roboto">W</span>
+                      hile Sri Lanka, jewel of the Indian Ocean, may be far from
+                      where we live, <br /> it shall always be in our hearts as
+                      a land of rich rainforests,
+                      <br />
+                      bountiful tea plantations and endless beaches.
+                      <br />
+                    </div>
+                    <div
+                      className="flex flex-col md:flex-row drop-shadow-[2px_2px_rgba(255,255,255,.5)] 
+                                 font-roboto text-center p-4 
+                                    lg:text-[1.5em]
+                                    xl:text-[1.8em]
+                                    2xl:text-[2.2em]"
+                    >
+                      This website serves as virtual point of reference to the
+                      Society and all its activities as well as a portal to
+                      upcoming events and community announcements.
+                    </div>
+                    <div
+                      className="drop-shadow-[2px_2px_rgba(255,255,255,.5)] font-roboto text-center p-4 
+                                    lg:text-[1.5em]
+                                    xl:text-[1.8em]
+                                    2xl:text-[2.2em]"
+                    >
+                      Please feel free to browse at your leisure. Feedback on
+                      this website is welcome.
                     </div>
                   </div>
                 </div>
