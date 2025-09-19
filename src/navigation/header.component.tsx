@@ -104,7 +104,7 @@ const Header = () => {
                   <div
                     className="flex flex-col 
                               w-[50%] md:w-[90%] lg:w-[90%] xl:w-[80%] 2xl:w-[85%] 
-                               text-[0.7em] md:text-[0.6em] lg:text-[.7em] xl:text-[.9em] 2xl:text-[1.3em]
+                               text-[0.7em] md:text-[0.6em] lg:text-[.7em] xl:text-[.5em] 2xl:text-[1em]
                                items-center my-2 mr-2"
                   >
                     <div className="flex w-[100%] gap-x-1 text-[#000]">

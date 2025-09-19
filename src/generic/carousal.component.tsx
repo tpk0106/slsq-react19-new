@@ -79,7 +79,7 @@ const Carousal = () => {
                 },
                 2560: {
                   width: 2600,
-                  height: "65rem",
+                  height: "30rem",
                 },
               },
             }}
