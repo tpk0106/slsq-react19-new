@@ -1,6 +1,6 @@
 import Menu from "../generic/menu.component";
 import navbarData from "../data/nav-data";
-// import FooterMenu from "../generic/bottom.menu.component";
+
 import Clock from "../generic/local-current-date-time.component";
 
 const formatDate = () => new Date().toLocaleDateString();
@@ -74,7 +74,6 @@ const Footer = () => {
                     </p>
                   </div>
 
-                  {/* <div className="mt-10 md:mt-20 lg:mt-30 text-xs"> */}
                   <div className="mt-2 mb-2 md:mb-0 md:mt-10 text-xs">
                     Developed by Thusith Kathaluwage using react
                     (v19)/typescript.♥️
@@ -84,18 +83,28 @@ const Footer = () => {
 
                 {/* this is a border with elephant display in mobile*/}
                 <div
-                  id="border"
-                  className="flex md:hidden w-[100%] h-[65px]"
-                ></div>
+                  id="border-wrapper"
+                  className="flex flex-col md:hidden w-[100%] h-[65px]"
+                >
+                  <div className="flex h-[100%]">
+                    <div id="left-image" className="w-[50%]"></div>
+                    <div id="right-image" className="w-[50%]"></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           {/* this is a border with elephant display */}
           <div
-            id="border"
-            className="hidden md:flex flex-col w-[100%] md:h-[145px] 2xl:h-[130px] xl:h-[175px]"
-          ></div>
+            id="border-wrapper"
+            className="hidden md:flex flex-col w-[100%] md:h-[145px] 2xl:h-[130px] xl:h-[155px]"
+          >
+            <div className="flex h-[100%]">
+              <div id="left-image" className="w-[50%]"></div>
+              <div id="right-image" className="w-[50%]"></div>
+            </div>
+          </div>
         </div>
       </div>
     </>

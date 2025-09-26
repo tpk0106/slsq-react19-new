@@ -38,7 +38,7 @@ const Publication = ({ ...publication }: publication) => {
             publication.month
           )}/${publication.file}`}
           target="_self"
-          className="bg-[#800020] text-white rounded-sm px-3 md:px-4 lg:px-10 mt-2 mb-2 my-2 mx-2 p-1 
+          className="bg-[#800020] text-white rounded-[.2em] px-3 md:px-4 lg:px-10 mt-2 mb-2 my-2 mx-2 p-1 
                      shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)]
                      hover:cursor-pointer hover:text-black hover:bg-[#FFF] 
                    hover:border-[#000] hover:shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)]"
@@ -58,10 +58,13 @@ const Publication = ({ ...publication }: publication) => {
             publication.month
           )}/${publication.file}`}
           target="_self"
-          className="bg-[#800020] text-white rounded-sm 
+          className="bg-[#800020] text-white rounded-[.2em] 
                       px-3 md:px-4 lg:px-10 mt-2 mb-2 my-2 mx-2 p-1 
                       shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)]
-                      hover:cursor-pointer hover:text-black hover:bg-[#FFF] hover:border-[#000] 
+                      hover:cursor-pointer 
+                      hover:text-black 
+                      hover:bg-[#FFF] 
+                      hover:border-[#000] 
                       hover:shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)]"
           onClick={(e: any) => handleClick(e)}
           key={publication.year}
@@ -96,7 +99,7 @@ const Publication = ({ ...publication }: publication) => {
 };
 
 const getMonth = (month: string) => {
-  let monthName = "";
+  let monthName;
   switch (month) {
     case "January":
       return (monthName = "01");

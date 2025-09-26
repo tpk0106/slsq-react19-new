@@ -87,17 +87,17 @@ const Home = () => {
                                 px-10 sm:leading-relaxed lg:leading1-loose text-center"
                 >
                   <div className="w-[100%] m-auto image-container" id="poster">
-                    <div className="w-[80%] md:w-[60%] lg:w-[40%] m-auto">
+                    <div className="w-[60%] m-auto">
                       <Link to={"/"}>
                         <img
                           src={poster_sankathana}
                           alt="Poster"
-                          className="w-[100%] rounded-[1em] border-2 border-white 
-                                      shadow-[0px_10px_20px_0px_rgba(000,_10,_10,_0.15)] scale-x-[-1]
-                                       hover:scale-[0.95] 
-                                       hover:scale-x-[-1.1] 
-                                       hover:duration-300 
-                                       hover:opacity-100"
+                          className="w-[100%] rounded-[1em] border-2 border-white
+                                      shadow-[0px_10px_20px_0px_rgba(000,_10,_10,_0.15)] 
+                                      hover:scale-[0.95] 
+                                      hover:duration-300
+                                      hover1:scale1-x-[-1.1] 
+                                      scale1x-[-1]"
                           // onClick={() => displayInfo()}
                         />
                       </Link>

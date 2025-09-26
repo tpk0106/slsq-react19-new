@@ -47,39 +47,39 @@ const Carousal = () => {
               breakpoints: {
                 320: {
                   width: 420,
-                  height: "3rem",
+                  // height: "3rem",
                 },
                 375: {
                   width: 1000,
-                  height: "7rem",
+                  // height: "7rem",
                 },
                 425: {
                   width: 1000,
-                  height: "7rem",
+                  // height: "7rem",
                 },
                 700: {
                   width: 1500,
-                  height: "15rem",
+                  // height: "15rem",
                 },
                 667: {
                   width: 1000,
-                  height: "15rem",
+                  // height: "15rem",
                 },
                 768: {
                   width: 1000,
-                  height: "14rem",
+                  // height: "14rem",
                 },
                 1024: {
                   width: 2500,
-                  height: "19rem",
+                  // height: "19rem",
                 },
                 1440: {
                   width: 2300,
-                  height: "28rem",
+                  // height: "28rem",
                 },
                 2560: {
                   width: 2600,
-                  height: "30rem",
+                  // height: "30rem",
                 },
               },
             }}
