@@ -9,9 +9,11 @@ import "@splidejs/react-splide/css/sea-green";
 import "@splidejs/react-splide/css/core";
 import { Link } from "react-router-dom";
 
-import poster_sankathana from "./assets/images/IMG-20250823-WA0009.jpg";
+// import poster_sankathana from "./assets/images/sankathana.webp";
 
 import Carousal from "./generic/carousal.component";
+// import Button from "./generic/button.component";
+// import { useRef } from "react";
 
 function displayInfo() {
   const e = document.getElementById("info");
@@ -26,6 +28,21 @@ info?.addEventListener("scroll", function () {
 });
 
 const Home = () => {
+  // const bottomRef = useRef(null);
+
+  // const ScrollToTop = () => {
+  //   console.log("scroll");
+  //   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  //   // document.documentElement.scrollBy(500, 0);
+  //   // document.documentElement.scrollTop = 0;
+  //   // document.body.scrollTop = 0;
+  // };
+
+  // // https://medium.com/codingbeauty-tutorials/react-scroll-to-top-of-page-9e7e7ef88dd8
+  // const scrollToBottom = () => {
+  //   // bottomRef.current!.scrollIntoView({ behavior: "smooth" });
+  // };
+
   return (
     <>
       <div
@@ -71,8 +88,9 @@ const Home = () => {
       // data-aos-anchor-placement="top-center"
       >
         <div
+          // ref={ref}
           id="home"
-          className="h1-screen w1-screen flex flex-row  left-1/4 right-1/4 -z-0 bg-[#EED3CC]"
+          className="flex flex-row  left-1/4 right-1/4 -z-0 bg-[#EED3CC]"
         >
           <div className="flex m-auto w-[100%]">
             <div className="flex justify-around">
@@ -90,7 +108,9 @@ const Home = () => {
                     <div className="w-[60%] m-auto">
                       <Link to={"/"}>
                         <img
-                          src={poster_sankathana}
+                          src={require("./assets/images/sankathana-large.webp")}
+                          srcSet={`${require("./assets/images/sankathana-large.webp")} 1080w, 
+                                   ${require("./assets/images/sankathana-small.webp")} 480w`}
                           alt="Poster"
                           className="w-[100%] rounded-[1em] border-2 border-white
                                       shadow-[0px_10px_20px_0px_rgba(000,_10,_10,_0.15)] 
@@ -110,14 +130,14 @@ const Home = () => {
                         <Carousal />
                       </div>
 
-                      <div className="w-[100%] md:w-[30%] flex flex-col font-roboto mt-10">
+                      <div className="w-[100%] md:w-[30%] flex flex-col mt-10">
                         <div
                           className="sm:text-body-laptop 
                                      md:text-[1.0em] 
                                      lg:text-[1.8em] 
                                      xl:text-[2.2em] 
                                      2xl:text-[2.5em] 
-                                     text-center 
+                                     text-center font-semibold
                           drop-shadow-[2px_2px_rgba(255,255,255,.5)] p-4"
                           data-aos="flip-left"
                         >
@@ -125,27 +145,33 @@ const Home = () => {
                           اَلسَّلامُ عَلَيْكُم <br /> and G’day
                         </div>
                         <div
-                          className="font-roboto 
-                                     lg:text-[1.5em] 
+                          className="lg:text-[1.5em] 
                                      xl:text-[1.8em] 
                                      2xl:text-[2.2em]"
-                        >
-                          <div>
-                            <div className="text-content drop-shadow-[2px_2px_rgba(255,255,255,.5)] text-center p-4">
-                              This is the official website of the Sri Lanka
-                            </div>
-                          </div>
-                        </div>
+                        ></div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div
+                        className="text-content drop-shadow-[2px_2px_rgba(255,255,255,.5)] 
+                                 text-center p-4  mt-5
+                                 lg:text-[1.5em]
+                                 xl:text-[1.8em]
+                                 2xl:text-[2.2em]"
+                      >
+                        This is the official website of the Sri Lanka Society of
+                        Queensland Incorporated.
                       </div>
                     </div>
 
                     <div
-                      className="drop-shadow-[2px_2px_rgba(255,255,255,.5)] font-roboto text-center p-4
+                      className="drop-shadow-[2px_2px_rgba(255,255,255,.5)] text-center p-4
                                  lg:text-[1.5em]
                                  xl:text-[1.8em]
                                  2xl:text-[2.2em]"
                     >
-                      <span className=" pl-2 text-[175%] font-roboto">W</span>
+                      <span className=" pl-2 text-[175%]">W</span>
                       hile Sri Lanka, jewel of the Indian Ocean, may be far from
                       where we live, <br /> it shall always be in our hearts as
                       a land of rich rainforests,
@@ -155,17 +181,17 @@ const Home = () => {
                     </div>
                     <div
                       className="flex flex-col md:flex-row drop-shadow-[2px_2px_rgba(255,255,255,.5)] 
-                                 font-roboto text-center p-4 
-                                    lg:text-[1.5em]
-                                    xl:text-[1.8em]
-                                    2xl:text-[2.2em]"
+                                 text-center p-4 
+                                 lg:text-[1.5em]
+                                 xl:text-[1.8em]
+                                 2xl:text-[2.2em]"
                     >
                       This website serves as virtual point of reference to the
                       Society and all its activities as well as a portal to
                       upcoming events and community announcements.
                     </div>
                     <div
-                      className="drop-shadow-[2px_2px_rgba(255,255,255,.5)] font-roboto text-center p-4 
+                      className="drop-shadow-[2px_2px_rgba(255,255,255,.5)] text-center p-4 
                                     lg:text-[1.5em]
                                     xl:text-[1.8em]
                                     2xl:text-[2.2em]"
@@ -174,6 +200,18 @@ const Home = () => {
                       this website is welcome.
                     </div>
                   </div>
+                  {/* <div ref={bottomRef}>
+                    <Button
+                      onClick={() => ScrollToTop()}
+                      // (
+                      //   event: MouseEvent<HTMLButtonElement>
+                      // ): void {
+                      //   ScrollTop();
+                      // }}
+                      caption={"Go to top"}
+                      classname="bg-red-300"
+                    />
+                  </div> */}
                 </div>
               </section>
             </div>

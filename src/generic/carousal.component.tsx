@@ -50,11 +50,12 @@ const Carousal = () => {
                   // height: "3rem",
                 },
                 375: {
-                  width: 1000,
+                  width: 420,
+                  // width: 1000,
                   // height: "7rem",
                 },
                 425: {
-                  width: 1000,
+                  width: 420,
                   // height: "7rem",
                 },
                 700: {
@@ -85,12 +86,13 @@ const Carousal = () => {
             }}
           >
             <SplideTrack>
-              {Images.map((image) => {
+              {Images.map((image, index) => {
                 return (
                   <SpliderSlideImage
                     imageUrl={image.imageUrl}
                     alt={image.alt}
                     classname={image.classname}
+                    key={index}
                   />
                 );
               })}

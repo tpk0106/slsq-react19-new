@@ -2,15 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
-@import url("https://fonts.googleapis.com/css?family=Roboto:900|Roboto+Mono:300,400,700");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Bigelow+Rules&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:900|Roboto+Mono:300,400,700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Bigelow+Rules&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"); */
 /* @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"); */
+
+@font-face {
+  font-family: "Montserrat", "Roboto", sans-serif;
+  font-display: swap;
+  /* src: url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"),
+    url("https://fonts.googleapis.com/css?family=Roboto:900|Roboto+Mono:300,400,700&display=swap"); */
+}
 
 body {
   margin: 0;
-  font-family: "Montserrat", "Bigelow", "Roboto", "Nunito", sans-serif;
+  font-family: "Montserrat", "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -351,13 +358,13 @@ Common breakpoints:
     height: 40px;
     /* background-color: yellow; */
     background-size: 20% auto;
-    background-image: url("/public/elephant-forward-walking.png");
+    background-image: url("/public/elephant-forward-walking.webp");
     background-repeat: repeat-x;
   }
   #right-image {
     /* height: 250px; */
     background-size: 20% auto;
-    background-image: url("/public/elephant-backward-walking.png");
+    background-image: url("/public/elephant-backward-walking.webp");
     background-repeat: repeat-x;
   }
 }
@@ -370,13 +377,13 @@ Common breakpoints:
   #left-image {
     /* height: 250px; */
     background-size: 20% auto;
-    background-image: url("/public/elephant-forward-walking.png");
+    background-image: url("/public/elephant-forward-walking.webp");
     background-repeat: repeat-x;
   }
   #right-image {
     /* height: 250px; */
     background-size: 20% auto;
-    background-image: url("/public/elephant-backward-walking.png");
+    background-image: url("/public/elephant-backward-walking.webp");
     background-repeat: repeat-x;
   }
 }
@@ -390,13 +397,13 @@ Common breakpoints:
   #left-image {
     /* height: 250px; */
     background-size: 35% auto;
-    background-image: url("/public/elephant-forward-walking.png");
+    background-image: url("/public/elephant-forward-walking.webp");
     background-repeat: repeat-x;
   }
   #right-image {
     /* height: 250px; */
     background-size: 35% auto;
-    background-image: url("/public/elephant-backward-walking.png");
+    background-image: url("/public/elephant-backward-walking.webp");
     background-repeat: repeat-x;
   }
 }
@@ -420,13 +427,13 @@ Common breakpoints:
 
   #left-image {
     background-size: 35% auto;
-    background-image: url("/public/elephant-forward-walking.png");
+    background-image: url("/public/elephant-forward-walking.webp");
     background-repeat: repeat-x;
   }
 
   #right-image {
     background-size: 35% auto;
-    background-image: url("/public/elephant-backward-walking.png");
+    background-image: url("/public/elephant-backward-walking.webp");
     background-repeat: repeat-x;
   }
 }
@@ -440,13 +447,13 @@ Common breakpoints:
 
   #left-image {
     background-size: 35% auto;
-    background-image: url("/public/elephant-forward-walking.png");
+    background-image: url("/public/elephant-forward-walking.webp");
     background-repeat: repeat-x;
   }
 
   #right-image {
     background-size: 35% auto;
-    background-image: url("/public/elephant-backward-walking.png");
+    background-image: url("/public/elephant-backward-walking.webp");
     background-repeat: repeat-x;
   }
 }
@@ -460,13 +467,13 @@ Common breakpoints:
 
   #left-image {
     background-size: 25% auto;
-    background-image: url("/public/elephant-forward-walking.png");
+    background-image: url("/public/elephant-forward-walking.webp");
     background-repeat: repeat-x;
   }
 
   #right-image {
     background-size: 25% auto;
-    background-image: url("/public/elephant-backward-walking.png");
+    background-image: url("/public/elephant-backward-walking.webp");
     background-repeat: repeat-x;
   }
 }
@@ -480,7 +487,7 @@ Common breakpoints:
   #left-image {
     /* height: 250px; */
     background-size: 35% auto;
-    background-image: url("/public/elephant-forward-walking.png");
+    background-image: url("/public/elephant-forward-walking.webp");
     background-repeat: repeat-x;
     margin: 0;
     padding: 0;
@@ -488,7 +495,7 @@ Common breakpoints:
   #right-image {
     /* height: 250px; */
     background-size: 35% auto;
-    background-image: url("/public/elephant-backward-walking.png");
+    background-image: url("/public/elephant-backward-walking.webp");
     background-repeat: repeat-x;
   }
 }
@@ -502,13 +509,13 @@ Common breakpoints:
   #left-image {
     /* height: 250px; */
     background-size: 35% auto;
-    background-image: url("/public/elephant-forward-walking.png");
+    background-image: url("/public/elephant-forward-walking.webp");
     background-repeat: repeat-x;
   }
   #right-image {
     /* height: 250px; */
     background-size: 35% auto;
-    background-image: url("/public/elephant-backward-walking.png");
+    background-image: url("/public/elephant-backward-walking.webp");
     background-repeat: repeat-x;
   }
 }
@@ -522,12 +529,12 @@ Common breakpoints:
 
   #left-image {
     background-size: 25% auto;
-    background-image: url("/public/elephant-forward-walking.png");
+    background-image: url("/public/elephant-forward-walking.webp");
     background-repeat: repeat-x;
   }
   #right-image {
     background-size: 25% auto;
-    background-image: url("/public/elephant-backward-walking.png");
+    background-image: url("/public/elephant-backward-walking.webp");
     background-repeat: repeat-x;
   }
 }
@@ -553,12 +560,12 @@ Common breakpoints:
 
   #left-image {
     background-size: 35% auto;
-    background-image: url("/public/elephant-forward-walking.png");
+    background-image: url("/public/elephant-forward-walking.webp");
     background-repeat: repeat-x;
   }
   #right-image {
     background-size: 35% auto;
-    background-image: url("/public/elephant-backward-walking.png");
+    background-image: url("/public/elephant-backward-walking.webp");
     background-repeat: repeat-x;
   }
 }
@@ -573,12 +580,12 @@ Common breakpoints:
 
   #left-image {
     background-size: 25% auto;
-    background-image: url("/public/elephant-forward-walking.png");
+    background-image: url("/public/elephant-forward-walking.webp");
     background-repeat: repeat-x;
   }
   #right-image {
     background-size: 25% auto;
-    background-image: url("/public/elephant-backward-walking.png");
+    background-image: url("/public/elephant-backward-walking.webp");
     background-repeat: repeat-x;
   }
 }
@@ -615,8 +622,8 @@ Common breakpoints:
 
 @media only screen and (min-width: 425px) {
   #poster {
-    background-image: url("./assets/images/liyawela-forward-facing-opacity-20-percent.png"),
-      url("./assets/images/liyawela-backward-facing-opacity-20-percent.png");
+    background-image: url("./assets/images/liyawela-forward-facing-opacity-20-percent.webp"),
+      url("./assets/images/liyawela-backward-facing-opacity-20-percent.webp");
     background-size: 10%;
 
     /* this settings  for no repeat*/
@@ -632,8 +639,8 @@ Common breakpoints:
 }
 
 #poster {
-  background-image: url("./assets/images/liyawela-forward-facing-opacity-20-percent.png"),
-    url("./assets/images/liyawela-backward-facing-opacity-20-percent.png");
+  background-image: url("./assets/images/liyawela-forward-facing-opacity-20-percent.webp"),
+    url("./assets/images/liyawela-backward-facing-opacity-20-percent.webp");
 
   background-size: 20%;
 

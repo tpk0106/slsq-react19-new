@@ -6,7 +6,7 @@ type publication = {
   months: publicationFile[];
   month: string;
   file: string;
-  key: string;
+  key: number;
 };
 
 type publicationFile = {

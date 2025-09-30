@@ -56,6 +56,17 @@ const Footer = () => {
                     </div>
                   </div>
                 </div>
+                {/* <div>
+                  <Menu
+                    key={"admin"}
+                    submenu={null}
+                    icon={""}
+                    label={"Administrator"}
+                    routerLink={"admin"}
+                    handleClick={() => handleClickMenu}
+                    classname={"cursor-point text-center"}
+                  />
+                </div> */}
               </div>
             </div>
             <hr className="ml-1 mr-1.5 hidden h-100 w-px border-l border-t-0 border-secondary-dark" />

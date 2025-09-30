@@ -96,11 +96,12 @@ const Publications = () => {
               <div className="flex flex-col md:flex-row m1-auto justify-around">
                 <div>
                   {/* <div className="flex flex-col max1-w-[70%] m-auto justify-around text-base md:text-2xl sm:flex-row items-center"> */}
-                  {PUBLICATIONS.map((publication) => {
+                  {PUBLICATIONS.map((publication, index) => {
                     return (
                       <>
                         {/* <li className="border-4 border-green-300"> */}
                         <div
+                          key={index}
                           className="flex flex-col md:flex-row shadow-[0px_5px_10px_0px_rgba(139,_0,_0,_0.15)] p1-5 border-[1px] w-[100%]
                                           my-4 rounded-[14px] bg-[#B222] text-[#7F1734] items-center border-white md:w-[95%] lg:w-[100%] m1-auto"
                         >
@@ -116,7 +117,7 @@ const Publications = () => {
                               {publication.months.length === 0 && (
                                 <div> No publications for this year</div>
                               )}
-                              {publication.months.map((m) => {
+                              {publication.months.map((m, i) => {
                                 return (
                                   <div className="py-5">
                                     <Publication
@@ -124,7 +125,7 @@ const Publications = () => {
                                       months={publication.months}
                                       month={m.date}
                                       file={m.file}
-                                      key={publication.year.toString()}
+                                      key={i}
                                     />
                                   </div>
                                 );

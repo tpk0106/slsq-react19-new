@@ -79,7 +79,7 @@ const Header = () => {
           min-[540px]:min-h-[27%]"
         >
           <div className="hidden md:flex">
-            <div className="flex w-[100%] border1-4 border1-blue-500 bg-white">
+            <div className="flex w-[100%] bg-white">
               {/* logo column sm:10%, md:10%, lg:15%, XL: 20%, 2xl:15% */}
               <div
                 className="hidden md:flex w-[10%] md:w-[15%] lg:w-[11%] xl:w-[12%] 
@@ -146,12 +146,11 @@ const Header = () => {
                                   border-1 border-white bg-[#fff] font-bold mt-1"
                     >
                       <div className="flex w-[40%] lg:w-[55%] xl:w-[50%] 2xl:w-[50%] justify-end"></div>
-                      <div
-                        className="flex w-[60%] lg:w-[45%] xl:w-[50%] 2xl:w-[50%] text-[70%] md:text-[100%] 
-                                      right1-0 justify1-end"
-                      >
-                        <div className="mr-2">Colombo Time:</div>
-                        <div>{<Clock />}</div>
+                      <div className="flex w-[60%] lg:w-[45%] xl:w-[50%] 2xl:w-[50%] text-[70%] md:text-[100%]">
+                        <div className="w-[40%] xl:w-[50%] text-right">
+                          Colombo Time:
+                        </div>
+                        <div className="w-[60%] xl:w-[50%]">{<Clock />}</div>
                       </div>
                     </div>
                   </div>
@@ -159,10 +158,7 @@ const Header = () => {
 
                 {/* end logo column */}
 
-                <div
-                  className="border1-4 border1-red-500 w1-[100%] rounded-tl-[20px] 
-                                rounded-tr-[20px] bg-[#7F1734] m-auto py-2 h-[100%]"
-                >
+                <div className="rounded-tl-[20px] rounded-tr-[20px] bg-[#7F1734] m-auto py-2 h-[100%]">
                   <div className="flex flex-1 items-center justify-between">
                     <nav
                       id="main-menu"

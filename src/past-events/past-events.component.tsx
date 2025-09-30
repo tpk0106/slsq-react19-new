@@ -8,14 +8,9 @@ const PastEvents = () => {
         <div className="flex m-auto">
           <section className="py-10 px-5 w-[100%]">
             <div className="flex-auto w-[100%] m1-auto p-4 columns-1 justify-items-center gap-3 grow md:columns-2 lg:columns-3">
-              {PastEventsData.map((img) => {
+              {PastEventsData.map((img, index) => {
                 return (
-                  <Card
-                    url={img.url}
-                    alt={img.alt}
-                    event="Past"
-                    key={img.url}
-                  />
+                  <Card url={img.url} alt={img.alt} event="Past" key={index} />
                 );
               })}
             </div>

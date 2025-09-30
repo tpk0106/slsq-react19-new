@@ -11,7 +11,6 @@ const UpComingEvents = () => {
                 url="../assets/upcoming-events/New-Year-2021-page-001-1583x2048.jpg"
                 alt="New Year 2021"
                 event="UpComing"
-                key="../assets/upcoming-events/New-Year-2021-page-001-1583x2048.jpg"
               />
             </div>
           </section>

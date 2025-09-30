@@ -4,15 +4,15 @@ type ImageCard = {
   url: string;
   alt: string;
   event: EventType;
-  key: string;
+  // key: number;
 };
 
-const Card = ({ url, alt, event, key }: ImageCard) => {
+const Card = ({ url, alt, event }: ImageCard) => {
   const index = url.lastIndexOf("/");
   const file = url.substring(index + 1);
 
   return (
-    <div className="shadow-2xl shadow-gray-500 p-5" key={key}>
+    <div className="shadow-2xl shadow-gray-500 p-5">
       <img
         src={
           event === "Past"

@@ -104,13 +104,14 @@ const PhotoGallery = () => {
         >
           <div className="flex flex-col text-center py-5 text-base md:text-[20px] lg:text-[30px]">
             <div>
-              {ImageSets.map((caption) => {
+              {ImageSets.map((caption, index) => {
                 return (
                   <Button
                     onClick={(e) => handleClick(e)}
                     icon={null}
                     caption={caption.caption}
                     classname="mb-5 font-bold text-white shadow-[0px_0px_rgba(0,0,0,1)] hover:drop-shadow-[2px_2px_rgba(0,0,0,.5)]  hover:cursor-pointer"
+                    key={index}
                   />
                 );
               })}
