@@ -157,40 +157,45 @@ footer menu
 @media only screen and (max-width: 374px) {
   /* For small mobile: */
   #photo-gallery {
-    background: center url("/public/beach4-320X664.jpg");
-    background-size: cover;
+    /* background: center url("/public/beach-320X664.jpg"); */
+    background: center url("/public/beach-320X543.jpg");
+    /* background-size: cover; */    
+     background-size: 100% 100%;
   }
 }
 
 @media only screen and (min-width: 375px) {
   /* For large mobile: */
   #photo-gallery {
-    background: center url("/public/beach4-375X664.jpg");
-    background-size: cover;
+    background: center url("/public/beach-375X664.jpg");
+    /* background-size: cover; */
+     background-size: 100% 100%;
   }
 }
 
 @media only screen and (min-width: 600px) {
   /* For tablets: */
   #photo-gallery {
-    background: center 50% url("/public/beach4.jpg");
-    background-size: cover;
+    background: center 50% url("/public/beach-1368X912.jpg");
+    /* background-size: cover; */
+     background-size: 100% 100%;
   }
 }
 
 @media only screen and (min-width: 768px) {
   /* For desktop: */
   #photo-gallery {
-    background: center 70% url("/public/beach4.jpg");
-    background-size: cover;
+    background: center 70% url("/public/beach-1368X912.jpg");
+    background-size: 100% 100%;
   }
 }
 
 @media only screen and (min-width: 1024px) {
   /* For desktop: */
   #photo-gallery {
-    background: 70% url("/public/beach4.jpg");
-    background-size: cover;
+    background: 70% url("/public/beach-1368X912.jpg");
+    /* background-size: cover; */
+    background-size: 100% 100%;
   }
 }
 

@@ -1,6 +1,7 @@
 import { MouseEvent, useState } from "react";
 
-import DisplayImage from "./display-image.component";
+import DisplayImage, { di } from "./display-image.component";
+
 import {
   SinhalaNewYear2021,
   MemebersAndFriendsLunch,

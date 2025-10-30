@@ -58,3 +58,4 @@ const DisplayImage = ({ images, setParentState }: imageSet) => {
 };
 
 export default DisplayImage;
+export { DisplayImage as di }

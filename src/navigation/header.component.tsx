@@ -146,11 +146,11 @@ const Header = () => {
                                   border-1 border-white bg-[#fff] font-bold mt-1"
                     >
                       <div className="flex w-[40%] lg:w-[55%] xl:w-[50%] 2xl:w-[50%] justify-end"></div>
-                      <div className="flex w-[60%] lg:w-[45%] xl:w-[50%] 2xl:w-[50%] text-[70%] md:text-[100%]">
-                        <div className="w-[40%] xl:w-[50%] text-right">
+                      <div className="flex w-[60%] lg:w-[45%] xl:w-[50%] 2xl:w-[50%]  lg:text-[60%] xl:text-[70%] md:text-[100%]">
+                        <div className="w-[40%] text-right my-auto">
                           Colombo Time:
                         </div>
-                        <div className="w-[60%] xl:w-[50%]">{<Clock />}</div>
+                        <div className="w-[60%]">{<Clock />}</div>
                       </div>
                     </div>
                   </div>
