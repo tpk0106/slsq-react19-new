@@ -2,18 +2,19 @@ import { useEffect, useRef } from "react";
 import CommitteeMembers from "../committe-members/committe-members.component";
 
 const AboutUs = () => {
-  const targetRef = useRef<HTMLDivElement | null>(null);
+  // const targetRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    // Scroll to the element when the component mounts or a dependency changes
-    if (targetRef.current) {
-      targetRef.current.scrollIntoView({ behavior: "smooth" }); // 'smooth' for animated scroll
-    }
-  }, []); // Empty dependency array means it runs once on mount
+  // useEffect(() => {
+  //   // Scroll to the element when the component mounts or a dependency changes
+  //   if (targetRef.current) {
+  //     targetRef.current.scrollIntoView({ behavior: "smooth" }); // 'smooth' for animated scroll
+  //   }
+  // }, []); // Empty dependency array means it runs once on mount
 
   return (
-    <div ref={targetRef}>
+    <div>
       <div
+        id="liyawela"
         className="max-h-[98%] max-w-[90%] min-w-[40%] m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] 
                       mt-0 text-[#7F1734] font-semibold"
       >

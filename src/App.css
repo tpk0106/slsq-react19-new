@@ -677,7 +677,7 @@ Common breakpoints:
 
   /* this settings  for repeat along y axis*/
   background-position: left 0px, right 100%;
-  background-repeat: repeat-y;
+  background-repeat: repeat-y repeat-x;
   /* end of this settings  for repeat along y axis*/
   /* transform: scaleX(-1); */
 }
@@ -687,4 +687,11 @@ Common breakpoints:
 .menu {
   padding-bottom: 5px;
   padding-top: 5px;
+}
+
+#liyawela {
+  background-image: url("./assets/images/liyawela-opacity-0.5.png"),
+    url("./assets/images/liyawela-mirror-opacity-0.5.png");
+  background-repeat: repeat-y;
+  background-position: left 0px, right 100%;
 }
