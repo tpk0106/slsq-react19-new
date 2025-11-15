@@ -7,6 +7,7 @@ import PastEvents from "../past-events/past-events.component";
 import UpComingEvents from "../upcoming-events/upcoming-events.component";
 import NoticeBoard from "../notice-board/notice-board.component";
 import Home from "../home.component";
+import Events from "../events/events.component";
 
 export const navbarData = [
   {
@@ -17,24 +18,17 @@ export const navbarData = [
     subMenus: null,
   },
   {
-    routerLink: "about-us",
-    element: AboutUs,
+    routerLink: "publications",
+    element: Publications,
     icon: "",
-    label: "About Us",
+    label: "Publications",
     subMenus: null,
   },
   {
-    routerLink: "contact-us",
-    element: ContactUs,
+    routerLink: "events",
+    element: Events,
     icon: "",
-    label: "Contact Us",
-    subMenus: null,
-  },
-  {
-    routerLink: "committee",
-    element: CommitteeMembers,
-    icon: "",
-    label: "Committee Members",
+    label: "Events",
     subMenus: null,
   },
   {
@@ -45,24 +39,17 @@ export const navbarData = [
     subMenus: null,
   },
   {
-    routerLink: "publications",
-    element: Publications,
+    routerLink: "contact-us",
+    element: ContactUs,
     icon: "",
-    label: "Publications",
+    label: "Contact Us",
     subMenus: null,
   },
   {
-    routerLink: "upcoming-events",
-    element: UpComingEvents,
+    routerLink: "about-us",
+    element: AboutUs,
     icon: "",
-    label: "UpComing Events",
-    subMenus: null,
-  },
-  {
-    routerLink: "past-events",
-    element: PastEvents,
-    icon: "",
-    label: "Past Events",
+    label: "About Us",
     subMenus: null,
   },
   {

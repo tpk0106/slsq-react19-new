@@ -106,112 +106,81 @@ const Home = () => {
                 >
                   <div className="w-[100%] m-auto image-container" id="poster">
                     <div className="w-[60%] m-auto">
-                      <Link to={"/"}>
-                        <img
-                          src={require("./assets/images/sankathana-large.webp")}
-                          srcSet={`${require("./assets/images/sankathana-large.webp")} 1080w, 
-                                   ${require("./assets/images/sankathana-small.webp")} 480w`}
-                          alt="Poster"
-                          className="w-[100%] rounded-[1em] border-2 border-white
-                                      shadow-[0px_10px_20px_0px_rgba(000,_10,_10,_0.15)] 
-                                      hover:scale-[0.95] 
-                                      hover:duration-300
-                                      hover1:scale1-x-[-1.1] 
-                                      scale1x-[-1]"
-                          // onClick={() => displayInfo()}
-                        />
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className="flex-col w-full">
-                    <div className="flex flex-col md:flex-row w-full">
-                      <div className="w-[100%] md:w-[70%] md1:w-full">
-                        <Carousal />
-                      </div>
-
-                      <div className="w-[100%] md:w-[30%] flex flex-col mt-10">
-                        <div
-                          className="sm:text-body-laptop 
+                      <div>
+                        <div>
+                          <div
+                            className="text-content drop-shadow-[2px_2px_rgba(255,255,255,.5)] 
+                                 text-center p-4  mt-5
+                                 lg:text-[1.5em]
+                                 xl:text-[1.8em]
+                                 2xl:text-[2.2em]"
+                          >
+                            This is the official website of the Sri Lanka
+                            Society of Queensland Incorporated.
+                          </div>
+                          <div className="w-[100%] md:w-[30%] flex mt1-10 m-auto">
+                            <div
+                              className="sm:text-body-laptop 
                                      md:text-[1.0em] 
                                      lg:text-[1.8em] 
                                      xl:text-[2.2em] 
                                      2xl:text-[2.5em] 
                                      text-center font-semibold
-                          drop-shadow-[2px_2px_rgba(255,255,255,.5)] p-4"
-                          data-aos="flip-left"
-                        >
-                          Welcome! <br /> ආයුබෝවන්, <br /> வணக்கம், <br />
-                          اَلسَّلامُ عَلَيْكُم <br /> and G’day
-                        </div>
-                        <div
-                          className="lg:text-[1.5em] 
-                                     xl:text-[1.8em] 
-                                     2xl:text-[2.2em]"
-                        ></div>
-                      </div>
-                    </div>
+                          drop-shadow-[2px_2px_rgba(255,255,255,.5)] p1-4 m-auto"
+                              data-aos="flip-left"
+                            >
+                              Welcome! <br /> ආයුබෝවන්, <br /> வணக்கம், <br />
+                              اَلسَّلامُ عَلَيْكُم <br /> and G’day
+                            </div>
+                          </div>
 
-                    <div>
-                      <div
-                        className="text-content drop-shadow-[2px_2px_rgba(255,255,255,.5)] 
-                                 text-center p-4  mt-5
+                          <div
+                            className="drop-shadow-[2px_2px_rgba(255,255,255,.5)] text-center p-4
                                  lg:text-[1.5em]
                                  xl:text-[1.8em]
                                  2xl:text-[2.2em]"
-                      >
-                        This is the official website of the Sri Lanka Society of
-                        Queensland Incorporated.
-                      </div>
-                    </div>
-
-                    <div
-                      className="drop-shadow-[2px_2px_rgba(255,255,255,.5)] text-center p-4
-                                 lg:text-[1.5em]
-                                 xl:text-[1.8em]
-                                 2xl:text-[2.2em]"
-                    >
-                      <span className=" pl-2 text-[175%]">W</span>
-                      hile Sri Lanka, jewel of the Indian Ocean, may be far from
-                      where we live, <br /> it shall always be in our hearts as
-                      a land of rich rainforests,
-                      <br />
-                      bountiful tea plantations and endless beaches.
-                      <br />
-                    </div>
-                    <div
-                      className="flex flex-col md:flex-row drop-shadow-[2px_2px_rgba(255,255,255,.5)] 
+                          >
+                            <span className=" pl-2 text-[175%]">W</span>
+                            hile Sri Lanka, jewel of the Indian Ocean, may be
+                            far from where we live, <br /> it shall always be in
+                            our hearts as a land of rich rainforests,
+                            <br />
+                            bountiful tea plantations and endless beaches.
+                            <br />
+                          </div>
+                          <div
+                            className="flex flex-col md:flex-row drop-shadow-[2px_2px_rgba(255,255,255,.5)] 
                                  text-center p-4 
                                  lg:text-[1.5em]
                                  xl:text-[1.8em]
                                  2xl:text-[2.2em]"
-                    >
-                      This website serves as virtual point of reference to the
-                      Society and all its activities as well as a portal to
-                      upcoming events and community announcements.
-                    </div>
-                    <div
-                      className="drop-shadow-[2px_2px_rgba(255,255,255,.5)] text-center p-4 
+                          >
+                            This website serves as virtual point of reference to
+                            the Society and all its activities as well as a
+                            portal to upcoming events and community
+                            announcements.
+                          </div>
+                          <div
+                            className="drop-shadow-[2px_2px_rgba(255,255,255,.5)] text-center p-4 
                                     lg:text-[1.5em]
                                     xl:text-[1.8em]
                                     2xl:text-[2.2em]"
-                    >
-                      Please feel free to browse at your leisure. Feedback on
-                      this website is welcome.
+                          >
+                            Please feel free to browse at your leisure. Feedback
+                            on this website is welcome.
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  {/* <div ref={bottomRef}>
-                    <Button
-                      onClick={() => ScrollToTop()}
-                      // (
-                      //   event: MouseEvent<HTMLButtonElement>
-                      // ): void {
-                      //   ScrollTop();
-                      // }}
-                      caption={"Go to top"}
-                      classname="bg-red-300"
-                    />
-                  </div> */}
+
+                  <div className="w-full">
+                    <div className="flex flex1-col md:flex-row w-full">
+                      <div className="w-[100%] md1:w-[70%] lg:w-[80%] m-auto md1:w-full">
+                        <Carousal />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </section>
             </div>

@@ -149,7 +149,7 @@ const Publications = () => {
             <section className="py-10 px-5 w-[100%]">
               <div
                 className="flex flex-col md:flex-row w-[100%] m-auto justify-around 
-                           text-sm md:text-[0.7em] lg:text-[1.0em] xl:text-[1.3em] 2xl:text-[1.3em] sm:flex-row items-center"
+                           text-sm md:text-[0.7em] lg:text-[1.0em] xl:text-[1.3em] 2xl:text-[1.3em] items-center"
               >
                 <div>
                   <Download

@@ -15,7 +15,7 @@ import { EnvelopeOpenIcon, MapPinIcon } from "@heroicons/react/24/outline";
 
 const ContactUs = () => {
   return (
-    <div className="m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] mt-0 w-[80%] md:w-[50%]">
+    <div className="m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] mt-0 w-[80%] md:w-[50%] mb-5">
       <div className="flex m-auto">
         <section className="py-10 px-5 w-[100%]">
           <div className="flex w-[100%] m-auto justify-around text-base md:text-xl lg:text-2xl sm:flex-row items-center">

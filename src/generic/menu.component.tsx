@@ -21,7 +21,7 @@ const Menu = ({
       className={
         classname
           ? classname
-          : "cursor-pointer items-center text-center py-4 m-auto hover:text-[#ffcccc] hover:font-bold"
+          : "cursor-pointer items-center text-center py-2 m-auto hover:text-[#ffcccc] hover:font-bold"
       }
       key={label}
     >

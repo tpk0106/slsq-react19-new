@@ -15,7 +15,11 @@ module.exports = {
       xxs: "320px",
       xs: "325px",
       sm: "425px",
-      smh: "664px",
+      // "sm-between": {
+      //   "min": "540px",
+      //   "max": "667px"
+      // },
+      smh: "667px",
       md: "768px",
       lg: "1024px",
       xl: "1280px",

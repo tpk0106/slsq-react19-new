@@ -28,7 +28,8 @@ footer menu
 
 #main-menu a.active,
 #mobileMenu a.active {
-  color: #ffcccc; /* contrast ratio [8B0000 and ffcccc] 7:03:1 */
+  color: #ffcccc;
+  /* contrast ratio [8B0000 and ffcccc] 7:03:1 */
   font-weight: 600;
   text-decoration: underline;
 }
@@ -39,7 +40,7 @@ footer menu
   text-decoration: underline;
 }
 
-#footer-menu li > a:hover {
+#footer-menu li>a:hover {
   color: #ffcccc;
   font-weight: 700;
 }
@@ -155,34 +156,38 @@ footer menu
 /* background image display */
 
 @media only screen and (max-width: 374px) {
+
   /* For small mobile: */
   #photo-gallery {
     /* background: center url("/public/beach-320X664.jpg"); */
     background: center url("/public/beach-320X543.jpg");
-    /* background-size: cover; */    
-     background-size: 100% 100%;
+    /* background-size: cover; */
+    background-size: 100% 100%;
   }
 }
 
 @media only screen and (min-width: 375px) {
+
   /* For large mobile: */
   #photo-gallery {
     background: center url("/public/beach-375X664.jpg");
     /* background-size: cover; */
-     background-size: 100% 100%;
+    background-size: 100% 100%;
   }
 }
 
 @media only screen and (min-width: 600px) {
+
   /* For tablets: */
   #photo-gallery {
     background: center 50% url("/public/beach-1368X912.jpg");
     /* background-size: cover; */
-     background-size: 100% 100%;
+    background-size: 100% 100%;
   }
 }
 
 @media only screen and (min-width: 768px) {
+
   /* For desktop: */
   #photo-gallery {
     background: center 70% url("/public/beach-1368X912.jpg");
@@ -191,6 +196,7 @@ footer menu
 }
 
 @media only screen and (min-width: 1024px) {
+
   /* For desktop: */
   #photo-gallery {
     background: 70% url("/public/beach-1368X912.jpg");
@@ -271,8 +277,10 @@ footer menu
 
 /* If the arrow is an SVG, you might need to target its stroke or fill */
 #splide .splide__arrow svg {
-  fill: #800000; /* Example:  color for the SVG fill */
-  stroke: #800000; /* Example: color for the SVG stroke */
+  fill: #800000;
+  /* Example:  color for the SVG fill */
+  stroke: #800000;
+  /* Example: color for the SVG stroke */
 }
 
 #splide .splide__progress__bar {
@@ -297,6 +305,7 @@ footer menu
   color: #800000;
   background-color: #fff;
 }
+
 /* To change the background color of the arrow button (if applicable) */
 /* Example: Yellow background */
 /* .splide__arrow {
@@ -328,6 +337,7 @@ width: 30%;
 .original-image {
   /* Optional: Add styling for the original image */
 }
+
 /* 
 .mirror-image {
   transform: scaleX(-1);
@@ -366,6 +376,7 @@ Common breakpoints:
     background-image: url("/public/elephant-forward-walking.webp");
     background-repeat: repeat-x;
   }
+
   #right-image {
     /* height: 250px; */
     background-size: 20% auto;
@@ -379,12 +390,14 @@ Common breakpoints:
     /* height: 250px; */
     margin-top: 0;
   }
+
   #left-image {
     /* height: 250px; */
     background-size: 20% auto;
     background-image: url("/public/elephant-forward-walking.webp");
     background-repeat: repeat-x;
   }
+
   #right-image {
     /* height: 250px; */
     background-size: 20% auto;
@@ -405,6 +418,7 @@ Common breakpoints:
     background-image: url("/public/elephant-forward-walking.webp");
     background-repeat: repeat-x;
   }
+
   #right-image {
     /* height: 250px; */
     background-size: 35% auto;
@@ -489,6 +503,7 @@ Common breakpoints:
   #border-wrapper {
     /* height: 170px; */
   }
+
   #left-image {
     /* height: 250px; */
     background-size: 35% auto;
@@ -497,6 +512,7 @@ Common breakpoints:
     margin: 0;
     padding: 0;
   }
+
   #right-image {
     /* height: 250px; */
     background-size: 35% auto;
@@ -511,12 +527,14 @@ Common breakpoints:
   #border-wrapper {
     height: 200px;
   }
+
   #left-image {
     /* height: 250px; */
     background-size: 35% auto;
     background-image: url("/public/elephant-forward-walking.webp");
     background-repeat: repeat-x;
   }
+
   #right-image {
     /* height: 250px; */
     background-size: 35% auto;
@@ -537,6 +555,7 @@ Common breakpoints:
     background-image: url("/public/elephant-forward-walking.webp");
     background-repeat: repeat-x;
   }
+
   #right-image {
     background-size: 25% auto;
     background-image: url("/public/elephant-backward-walking.webp");
@@ -568,6 +587,7 @@ Common breakpoints:
     background-image: url("/public/elephant-forward-walking.webp");
     background-repeat: repeat-x;
   }
+
   #right-image {
     background-size: 35% auto;
     background-image: url("/public/elephant-backward-walking.webp");
@@ -588,6 +608,7 @@ Common breakpoints:
     background-image: url("/public/elephant-forward-walking.webp");
     background-repeat: repeat-x;
   }
+
   #right-image {
     background-size: 25% auto;
     background-image: url("/public/elephant-backward-walking.webp");
@@ -662,3 +683,8 @@ Common breakpoints:
 }
 
 /* end Poster  */
+
+.menu {
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
