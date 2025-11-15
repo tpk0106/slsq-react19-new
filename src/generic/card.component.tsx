@@ -17,9 +17,9 @@ const Card = ({ url, alt, event }: ImageCard) => {
         src={
           event === "Past"
             ? require("../assets/events/" + file)
-            : event === "UpComing"
-            ? require("../assets/upcoming-events/" + file)
-            : require("../assets/notice-board/" + file)
+            : // : event === "UpComing"
+              // ? require("../assets/upcoming-events/" + file)
+              require("../assets/notice-board/" + file)
         }
         alt={alt}
         className="border-gray-600 m-auto  hover:border-gray-900"
