@@ -27,7 +27,8 @@ const DisplayImage = ({ images, setParentState }: imageSet) => {
   const [open, setOpen] = useState(true);
   //const zoomRef = useRef(null);
 
-  const imageSource: any = [];
+  //  const imageSource: any = [];
+  const imageSource: img[] = [];
   images.forEach((image) => {
     const file = require("../" + image.src);
     imageSource.push({ src: file });
@@ -58,4 +59,4 @@ const DisplayImage = ({ images, setParentState }: imageSet) => {
 };
 
 export default DisplayImage;
-export { DisplayImage as di }
+export { DisplayImage as di };

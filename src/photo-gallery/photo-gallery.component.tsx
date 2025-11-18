@@ -1,6 +1,6 @@
 import { MouseEvent, useState } from "react";
 
-import DisplayImage, { di } from "./display-image.component";
+import DisplayImage from "./display-image.component";
 
 import {
   SinhalaNewYear2021,
@@ -22,7 +22,11 @@ import {
 import Button from "../generic/button.component";
 import { ImageSets } from "../data/image-sets";
 
-let imagesSet: any;
+type src = {
+  src: string;
+};
+
+let imagesSet: src[];
 
 // const infoSymbol = "\u2139"; // Unicode Information Source (U+2139)
 const PhotoGallery = () => {

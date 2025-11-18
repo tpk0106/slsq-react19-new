@@ -15,29 +15,31 @@ import { EnvelopeOpenIcon, MapPinIcon } from "@heroicons/react/24/outline";
 
 const ContactUs = () => {
   return (
-    <div className="m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] mt-0 w-[80%] md:w-[50%] mb-5">
-      <div className="flex m-auto">
-        <section className="py-10 px-5 w-[100%]">
-          <div className="flex w-[100%] m-auto justify-around text-base md:text-xl lg:text-2xl sm:flex-row items-center">
-            <div className="px-3 md:p-0 m-auto">
-              <MapPinIcon className="h-8 w-8 text-[#B22222]" />
+    <div className="h-[100%]">
+      <div className="m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] w-[80%] md:w-[50%] mb-5 mt-[100px]">
+        <div className="flex m-auto">
+          <section className="py-10 px-5 w-[100%]">
+            <div className="flex w-[100%] m-auto justify-around text-base md:text-xl lg:text-2xl sm:flex-row items-center">
+              <div className="px-3 md:p-0 m-auto">
+                <MapPinIcon className="h-8 w-8 text-[#B22222]" />
+              </div>
+              <div className="basis-5/6 my1-3 border1-spacing-3 text-base md:text-xl lg:text-2xl">
+                <p className="m-auto">Secretary</p>
+                <p className="m-auto">Sri Lanka Society of Queensland Inc.</p>
+                <p className="m-auto">PO Box 15099,</p>
+                <p className="m-auto">CITY EAST QLD 4002.</p>
+              </div>
             </div>
-            <div className="basis-5/6 my1-3 border1-spacing-3 text-base md:text-xl lg:text-2xl">
-              <p className="m-auto">Secretary</p>
-              <p className="m-auto">Sri Lanka Society of Queensland Inc.</p>
-              <p className="m-auto">PO Box 15099,</p>
-              <p className="m-auto">CITY EAST QLD 4002.</p>
+            <div className="flex flex-col md:flex-row w-[100%] m-auto justify-around text-base md:text-xl lg:text-2xl sm:flex1-row items-center">
+              <div className="px-3 p-3 md:p-0 m-auto">
+                <EnvelopeOpenIcon className="h-8 w-8 text-[#B22222]" />
+              </div>
+              <div className="basis-5/6 my-3">
+                <div className="m-auto">secretary&#64;srilankansqld.org</div>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-col md:flex-row w-[100%] m-auto justify-around text-base md:text-xl lg:text-2xl sm:flex1-row items-center">
-            <div className="px-3 p-3 md:p-0 m-auto">
-              <EnvelopeOpenIcon className="h-8 w-8 text-[#B22222]" />
-            </div>
-            <div className="basis-5/6 my-3">
-              <div className="m-auto">secretary&#64;srilankansqld.org</div>
-            </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
     </div>
   );

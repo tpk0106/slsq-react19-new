@@ -15,35 +15,32 @@ const CommitteeMembers = () => {
             >
               <ul>
                 {Committee_Members.map((member, index) => {
-                  console.log("index : ", index);
+                  // console.log("index : ", index);
                   return (
-                    <>
-                      <li key={index}>
-                        <div
-                          className="flex shadow-[0px_5px_10px_0px_rgba(139,_0,_0,_0.15)] border-[1px] p-[2px] w-[90%] m-auto md:w-full 
+                    <li key={index}>
+                      <div
+                        className="flex shadow-[0px_5px_10px_0px_rgba(139,_0,_0,_0.15)] border-[1px] p-[2px] w-[90%] m-auto md:w-full 
                           my-4 rounded-[14px] bg-[#B222] text-[#7F1734]"
-                          // key={index}
-                        >
-                          <div
-                            className="max-[320px]:mx-1 max-[375px]:mx-2 max-[425px]:p-4 
+                      >
+                        <div
+                          className="max-[320px]:mx-1 max-[375px]:mx-2 max-[425px]:p-4 
                                           max-[320px]:px-2 
                                           md:mx-10 my-5 flex justify-between w-full"
-                          >
-                            <div className="mr-4 md:mr-10 flex">
-                              <div className="mx-2">
-                                <UserCircleIcon className="h-4 w-4 md:h-8 md:w-8 text-[#B22222]" />
-                              </div>
-                              {member.post}
+                        >
+                          <div className="mr-4 md:mr-10 flex">
+                            <div className="mx-2">
+                              <UserCircleIcon className="h-4 w-4 md:h-8 md:w-8 text-[#B22222]" />
                             </div>
-                            <div className="sm:mx-2">
-                              {member.name.length > 0
-                                ? member.name
-                                : "----------"}
-                            </div>
+                            {member.post}
+                          </div>
+                          <div className="sm:mx-2">
+                            {member.name.length > 0
+                              ? member.name
+                              : "----------"}
                           </div>
                         </div>
-                      </li>
-                    </>
+                      </div>
+                    </li>
                   );
                 })}
               </ul>

@@ -3,11 +3,11 @@ import navbarData from "../data/nav-data";
 import Menu from "../generic/menu.component";
 import Footer from "./footer.component";
 import Clock from "../generic/local-current-date-time.component";
-import {
-  EnvelopeOpenIcon,
-  MapPinIcon,
-  PhoneIcon,
-} from "@heroicons/react/24/outline";
+// import {
+//   EnvelopeOpenIcon,
+//   MapPinIcon,
+//   PhoneIcon,
+// } from "@heroicons/react/24/outline";
 
 import Logo from "../generic/logo.component";
 import SriLankaAustraliaCrossFlags from "../generic/sri-lanka-australia-cross-flags.component";
@@ -105,19 +105,19 @@ const Header = () => {
                       className="flex flex-col 
                               w-[50%] md:w-[90%] lg:w-[90%] xl:w-[80%] 2xl:w-[85%] 
                                text-[0.7em] md:text-[0.6em] lg:text-[.7em] xl:text-[.5em] 2xl:text-[1em]
-                               items-center my1-2 mr1-2 border1-4 border1-red-400 m1-auto px-[1%]"
+                               items-center px-[1%]"
                     >
                       <div
                         className="flex flex1-grow w-[100%] rounded-md shadow-md justify-center text-center 
-                                  border-1 border1-white bg-[#fff] font-bold h-25 border1-4 border1-yellow-300 py-2 m-2"
+                                  border-1 border1-white bg-[#fff] font-bold h-25 py-2 m-2"
                       >
-                        <div className="flex w-[40%] lg:w-[55%] xl:w-[50%] 2xl:w-[50%] justify-end border1-4 border1-blue-700"></div>
+                        <div className="flex w-[40%] lg:w-[55%] xl:w-[50%] 2xl:w-[50%] justify-end"></div>
                         <div
                           className="flex w-[60%] lg:w-[45%] xl:w-[50%] 2xl:w-[50%]
-                                   text-base md:text-[0.5rem] lg:text-[0.7rem] xl:text-[1rem] border1-4 border1-green-800 m-0"
+                                   text-base md:text-[0.5rem] lg:text-[0.7rem] xl:text-[1rem] m-0"
                         >
-                          <div className="flex border1-3 border1-purple-300 w-full m-0">
-                            <div className="w-[40%] text-right my1-auto">
+                          <div className="flex w-full m-0">
+                            <div className="w-[40%] text-right">
                               Colombo Time:
                             </div>
                             <div className="w-[60%]">{<Clock />}</div>
@@ -130,7 +130,7 @@ const Header = () => {
 
                 {/* end logo column */}
 
-                <div className="rounded-tl-[20px] rounded-tr-[20px] bg-[#7F1734] m-auto py-2 h-[100%] border1-4 border1-green-800">
+                <div className="rounded-tl-[20px] rounded-tr-[20px] bg-[#7F1734] m-auto py-2 h-[100%]">
                   <div className="flex flex-1 items-center justify-between">
                     <nav
                       id="main-menu"
@@ -174,7 +174,7 @@ const Header = () => {
           </div>
 
           {/* mobile hedader with address details and logo */}
-          <div className="flex w-[90%] flex-col min-[667px]:hidden mx-auto mb-2 border1-4 border1-yellow-600">
+          <div className="flex w-[90%] flex-col min-[667px]:hidden mx-auto mb-2">
             <div className="flex w-[100%] mx-auto bg-white">
               <Link to="/" className="flex align-middle p-1">
                 <div className="w-[15%] auto">
@@ -193,7 +193,7 @@ const Header = () => {
                         bg-[#fff] font-bold"
               >
                 <div className="flex w-[100%] xxs:text-[50%] text-[70%]">
-                  <div className="flex w-[40%]  justify-end">Colombo Time:</div>
+                  <div className="flex w-[40%] justify-end">Colombo Time:</div>
                   <div className="flex-grow w-[60%]">{<Clock />}</div>
                 </div>
               </div>
@@ -211,7 +211,7 @@ const Header = () => {
                            mb-2 h-[60%] bg-white"
           >
             <div className="flex w-[50%] m-auto bg-white p-1">
-              <Link to="/" className="flex align-middle p1-1 w-full">
+              <Link to="/" className="flex align-middle w-full">
                 <div className="w-[20%] auto">
                   <Logo />
                 </div>
@@ -220,7 +220,7 @@ const Header = () => {
 
             <div className="flex w-[50%]">
               <div className="flex w-[100%] justify-end">
-                <div className="flex w-[40%] auto  items-center justify-evenly">
+                <div className="flex w-[40%] auto items-center justify-evenly">
                   <SriLankaAustraliaCrossFlags />
                 </div>
               </div>
@@ -234,7 +234,7 @@ const Header = () => {
                         bg-[#fff] font-bold"
             >
               <div className="flex w-[100%] xxs:text-[50%] text-[70%]">
-                <div className="flex w-[40%]  justify-end">Colombo Time:</div>
+                <div className="flex w-[40%] justify-end">Colombo Time:</div>
                 <div className="flex-grow w-[60%]">{<Clock />}</div>
               </div>
             </div>

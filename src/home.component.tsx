@@ -140,6 +140,23 @@ const Home = () => {
                                  xl:text-[1.8em]
                                  2xl:text-[2.2em]"
                           >
+                            Sri Lanka Society of Queensland was established in
+                            1978 as a community organisation for the Sri Lankan
+                            migrant community in Queensland, Australia to gather
+                            and celebrate the Sri Lankan culture and to foster
+                            connections with the wider Australian community. We
+                            welcome Sri Lankans of all ethnicities and religions
+                            to create a harmonious community and promote
+                            co-operation and friendship among the Sri Lankan
+                            community and the wider Australian community.
+                          </div>
+
+                          <div
+                            className="drop-shadow-[2px_2px_rgba(255,255,255,.5)] text-center p-4
+                                 lg:text-[1.5em]
+                                 xl:text-[1.8em]
+                                 2xl:text-[2.2em]"
+                          >
                             <span className=" pl-2 text-[175%]">W</span>
                             hile Sri Lanka, jewel of the Indian Ocean, may be
                             far from where we live, <br /> it shall always be in

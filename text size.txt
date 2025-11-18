@@ -1,0 +1,20 @@
+@media (min-width: 1024px) {
+    .lg\:text-xl {
+        font-size: 1.25rem /* 20px */;
+        line-height: 1.75rem /* 28px */;
+    }
+}
+
+@media (min-width: 1280px) {
+    .xl\:text-2xl {
+        font-size: 1.5rem /* 24px */;
+        line-height: 2rem /* 32px */;
+    }
+}
+
+@media (min-width: 768px) {
+    .md\:text-xl {
+        font-size: 1.25rem /* 20px */;
+        line-height: 1.75rem /* 28px */;
+    }
+}
