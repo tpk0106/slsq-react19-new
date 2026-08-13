@@ -5,16 +5,18 @@ import Home from "./home.component";
 import Header from "./navigation/header.component";
 import Administrator from "./admin/admin.component";
 import Members from "./admin/members.component";
+import Root from "./root/root.component";
 
 const HOME = <Home />;
-const HEADER = <Header />;
+// const HEADER = <Header />;
 const ROOT = "/";
+const ROOTCOMPONENT = <Root />;
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path={ROOT} element={HEADER}>
+        <Route path={ROOT} element={ROOTCOMPONENT}>
           <Route index path={ROOT} element={HOME} />
           {navbarData.map((item) => (
             <Route path={item.routerLink} element={item.element()} />

@@ -2,6 +2,8 @@ import Menu from "../generic/menu.component";
 import navbarData from "../data/nav-data";
 
 import Clock from "../generic/local-current-date-time.component";
+import MenuGenerator from "../generic/menu-generator.component";
+import React from "react";
 
 const formatDate = () => new Date().toLocaleDateString();
 
@@ -10,7 +12,8 @@ const handleClickMenu = () => {
   ele?.classList.toggle("hidden");
 };
 
-const Footer = () => {
+const Footer = ({ clock }: { clock: React.ReactElement }) => {
+  // const ClockMemo = React.memo(Clock);
   return (
     <>
       <div
@@ -25,7 +28,11 @@ const Footer = () => {
                   id="footer-menu"
                   className="flex flex-col leading-6 list-none"
                 >
-                  {navbarData.map((menu) => {
+                  <MenuGenerator
+                    data={navbarData}
+                    classname={"cursor-pointer text-center"}
+                  />
+                  {/* {navbarData.map((menu) => {
                     return (
                       <Menu
                         label={menu.label}
@@ -37,7 +44,7 @@ const Footer = () => {
                         key={menu.label}
                       />
                     );
-                  })}
+                  })} */}
                 </ul>
               </div>
               <div className="w-[100%] md:w-[70%] justify-around text-center my-5 md:my-0">
@@ -52,7 +59,9 @@ const Footer = () => {
                       Colombo Time:
                     </div>
                     <div className="flex w-[60%] md:w-[60%] lg:w-[55%] justify-start text-[70%] md:text-[100%]">
-                      {<Clock />}
+                      {/* {<Clock />} */}
+                      {/* {<ClockMemo />} */}
+                      {clock}
                     </div>
                   </div>
                 </div>

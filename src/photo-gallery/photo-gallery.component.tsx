@@ -102,7 +102,7 @@ const PhotoGallery = () => {
 
   return (
     <>
-      <div className="mx-5">
+      <div className="mx-5 pb-5">
         <div
           id="photo-gallery"
           className="container m-auto w-[100%] mt-5 mb-10"

@@ -194,7 +194,7 @@ const Header = () => {
         {/* footer and content */}
         <div className="flex flex-col w-full pt-10 h-full bg-[#EED3CC]">
           <Outlet />
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
     </>

@@ -14,11 +14,11 @@ const AboutUs = () => {
   // }, []); // Empty dependency array means it runs once on mount
 
   return (
-    <div>
+    <div className="pb-10">
       <div
         id="liyawela"
         className="max-h-[98%] max-w-[90%] min-w-[40%] m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] 
-                      mt-0 text-[#7F1734] font-semibold"
+                      mt1-0 text-[#7F1734] font-semibold mt-5"
       >
         <div className="flex-1 text-base md:text-xl lg:text-2xl xl:text-3xl mx-5 p-[1em] font-roboto">
           <div className="flex flex-col items-center content-center ">

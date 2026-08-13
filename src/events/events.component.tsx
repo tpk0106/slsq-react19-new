@@ -3,8 +3,8 @@ import Card from "../generic/card.component";
 
 const Events = () => {
   return (
-    <div>
-      <div className="max-w-[70%] m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] mt-0 my-5">
+    <div className="pb-5">
+      <div className="max-w-[70%] m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] mt-5 my-5">
         <div className="flex m-auto">
           <section className="py-10 px-5 w-[100%]">
             <div

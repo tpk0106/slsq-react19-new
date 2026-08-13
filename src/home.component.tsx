@@ -6,12 +6,14 @@ import "@splidejs/react-splide/css/skyblue";
 import "@splidejs/react-splide/css/sea-green";
 
 // or only core styles
-import "@splidejs/react-splide/css/core";
-import { Link } from "react-router-dom";
+// import "@splidejs/react-splide/css/core";
+// import { Link } from "react-router-dom";
 
 // import poster_sankathana from "./assets/images/sankathana.webp";
 
 import Carousal from "./generic/carousal.component";
+import { useCallback, useMemo } from "react";
+
 // import Button from "./generic/button.component";
 // import { useRef } from "react";
 
@@ -42,6 +44,10 @@ const Home = () => {
   // const scrollToBottom = () => {
   //   // bottomRef.current!.scrollIntoView({ behavior: "smooth" });
   // };
+
+  const memoizedCarousal = useMemo(() => <Carousal />, []);
+
+  const callBackCarousal = useCallback(() => memoizedCarousal, []);
 
   return (
     <>
@@ -142,7 +148,7 @@ const Home = () => {
                           >
                             Sri Lanka Society of Queensland was established in
                             1978 as a community organisation for the Sri Lankan
-                            migrant community in Queensland, Australia to gather
+                            migrant community in Queensland, Australia together
                             and celebrate the Sri Lankan culture and to foster
                             connections with the wider Australian community. We
                             welcome Sri Lankans of all ethnicities and religions
@@ -194,6 +200,8 @@ const Home = () => {
                   <div className="w-full">
                     <div className="flex flex1-col md:flex-row w-full">
                       <div className="w-[100%] md1:w-[70%] lg:w-[80%] m-auto md1:w-full">
+                        {/* {callBackCarousal()} */}
+                        {/* {memoizedCarousal} */}
                         <Carousal />
                       </div>
                     </div>

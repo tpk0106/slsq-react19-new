@@ -13,6 +13,7 @@ import NominationForm from "../assets/publications/NominationForm.doc";
 import ProxyForm from "../assets/publications/ProxyForm.doc";
 import Download from "../generic/download.component";
 import { useEffect, useRef } from "react";
+import YearlyPublications from "../generic/yearly-publications.component";
 // import { Console } from "console";
 // import { DivideIcon } from "@heroicons/react/24/outline";
 
@@ -82,10 +83,10 @@ const Publications = () => {
 
   return (
     <>
-      <div>
+      <div className="pb-5">
         <div
           id="id1"
-          className="max-w-[90%] m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] mt-0 my-5"
+          className="max-w-[90%] m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] mt-5 my-5"
           // ref={targetRef}
         >
           <div
@@ -95,47 +96,25 @@ const Publications = () => {
             <section className="py-10 px-5 w-[100%]">
               <div className="flex flex-col md:flex-row m1-auto justify-around">
                 <div>
-                  {/* <div className="flex flex-col max1-w-[70%] m-auto justify-around text-base md:text-2xl sm:flex-row items-center"> */}
                   {PUBLICATIONS.map((publication, index) => {
                     return (
-                      <>
-                        <div
-                          key={index}
-                          className="flex flex-col md:flex-row shadow-[0px_5px_10px_0px_rgba(139,_0,_0,_0.15)] p1-5 border-[1px] w-[100%]
-                                          my-4 rounded-[14px] bg-[#B222] text-[#7F1734] items-center border-white md:w-[95%] lg:w-[100%] m1-auto"
-                        >
-                          <div
-                            className="mx-4 md:mx-10 my-5 flex-col items-center m-auto text-center 
-                                          text-sm md:text-[1.0em] lg:text-[1.0em] xl:text-[1.3em] 2xl:text-[1.3em]"
-                          >
-                            <div className="flex items-center w-[100%]">
-                              <div className="mx-auto">{publication.year}</div>
-                            </div>
-                            <hr className="border-1 border-[#800020] my1-3 p-2" />
-                            <div className="flex justify-between flex-col md:flex-row w-[100%] px-2">
-                              {publication.months.length === 0 && (
-                                <div> No publications for this year</div>
-                              )}
-                              {publication.months.map((m, i) => {
-                                return (
-                                  <div className="py-5">
-                                    <Publication
-                                      year={Number(publication.year)}
-                                      months={publication.months}
-                                      month={m.date}
-                                      file={m.file}
-                                      key={i}
-                                    />
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </div>
-                        </div>
-                      </>
+                      <YearlyPublications
+                        key={index}
+                        year={publication.year.toString()}
+                        months={publication.months}
+                        index={index}
+                        children={publication.months.map((p, idx) => (
+                          <Publication
+                            key={++idx}
+                            year={Number(publication.year)}
+                            months={publication.months}
+                            month={p.date}
+                            file={p.file}
+                          />
+                        ))}
+                      />
                     );
                   })}
-                  {/* </div> */}
                 </div>
               </div>
             </section>
