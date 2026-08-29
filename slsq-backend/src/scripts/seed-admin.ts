@@ -87,7 +87,8 @@ async function seedAdmin() {
       console.log(`  Password: ${ADMIN_PASSWORD}`);
     }
 
-    await sql.close();
+    // await sql.close();
+    await pool.close();
   } catch (err) {
     console.error("Seed failed:", err);
     process.exit(1);
