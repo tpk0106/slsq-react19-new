@@ -25,7 +25,12 @@ const PORT = process.env.PORT || 5000;
 // CORS — allow React dev server (port 3000) and production builds
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:5000"],
+    // origin: ["http://localhost:3000", "http://localhost:5000"],
+    origin: [
+  "http://localhost:3000",
+  "http://localhost:5000",
+  "http://app.contoso.com",
+],
     credentials: true,
   }),
 );
