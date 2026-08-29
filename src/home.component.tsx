@@ -1,33 +1,8 @@
 // Default theme
 import "@splidejs/react-splide/css";
 
-// or other themes
-import "@splidejs/react-splide/css/skyblue";
-import "@splidejs/react-splide/css/sea-green";
-
-// or only core styles
-// import "@splidejs/react-splide/css/core";
-// import { Link } from "react-router-dom";
-
-// import poster_sankathana from "./assets/images/sankathana.webp";
-
 import Carousal from "./generic/carousal.component";
 import { useCallback, useMemo } from "react";
-
-// import Button from "./generic/button.component";
-// import { useRef } from "react";
-
-function displayInfo() {
-  const e = document.getElementById("info");
-  e?.classList.toggle("hidden");
-}
-
-const info = document.getElementById("info");
-
-info?.addEventListener("scroll", function () {
-  console.log("scrolling main:", info);
-  console.log("scrolling main");
-});
 
 const Home = () => {
   // const bottomRef = useRef(null);
@@ -57,11 +32,11 @@ const Home = () => {
                   m-auto rounded-[1em] border-1 border-[#000] 
                   shadow-[0px_10px_20px_0px_rgba(000,_10,_10,_0.15)] opacity-100 z-50 bg-[#800000] text-white"
       >
-        <div className="px-5 py-5">
+        {/* <div className="px-5 py-5">
           <a href="##" onClick={() => displayInfo()}>
             X
           </a>
-        </div>
+        </div> */}
         <div className="px-10 h-[500px] md:h-[300px]">
           In collaberation with Sri lanka society of queensland (SLSQ). with
           prof. Raj Somadeva. Brisbane, Sepetember 6, 2025 St james Church Hall

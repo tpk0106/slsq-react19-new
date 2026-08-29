@@ -1,196 +1,284 @@
-import { Button, TextField, Typography } from "@mui/material";
-import { Committee_Members } from "../data/slsq-members";
-import { ChangeEvent, useState } from "react";
+import { Button, TextField, Typography, Alert } from "@mui/material";
+import { ChangeEvent, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { API_BASE, getAuthHeaders } from "../config/api";
+import { Member } from "../model/member";
 
-interface member {
-  post: string;
-  name: string;
-}
-
-const defaultMemberForm = {
+const defaultMemberForm: Member = {
+  id: undefined,
   post: "",
   name: "",
 };
-const Members = () => {
-  const [members, setMembers] = useState<member[]>(Committee_Members);
 
-  const [memberForm, setMemberForm] = useState<member>(defaultMemberForm);
+const Members = () => {
+  const [members, setMembers] = useState<Member[]>([]);
+  const [memberForm, setMemberForm] = useState<Member>({ ...defaultMemberForm });
+  const [editing, setEditing] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("slsq-token");
+    if (!token) {
+      navigate("/admin");
+      return;
+    }
+    fetchMembers();
+  }, []);
+
+  const fetchMembers = async () => {
+    try {
+      const response = await fetch(`${API_BASE}/api/about/members`);
+      const data = await response.json();
+      setMembers(
+        data.map((m: any) => ({
+          id: m.Id,
+          post: m.Post,
+          name: m.Name,
+          displayOrder: m.DisplayOrder,
+        }))
+      );
+    } catch (err) {
+      setError("Failed to load members.");
+    }
+  };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setMemberForm({ ...memberForm, [name]: value });
-    console.log(memberForm.post);
-    console.log(memberForm.name);
-
-    // const newErrors = validateForm(signInForm);
-    // setErrors(newErrors);
   };
 
-  const handleCancel = () => {
-    defaultMemberForm.post = "";
-    defaultMemberForm.name = "";
+  const resetForm = () => {
+    setMemberForm({ ...defaultMemberForm });
+    setEditing(false);
+    setError(null);
+    setSuccess(null);
   };
 
-  const handleEdit = (rowData: member) => {
-    console.log("Row Data : ", rowData);
-    // const { name, value } = event.target;
-    defaultMemberForm.post = rowData.post;
-    defaultMemberForm.name = rowData.name;
-    setMemberForm({ ...memberForm, name: rowData.name, post: rowData.post });
-    console.log("Row Data : ", memberForm);
-    // defaultMemberForm.post = rowData?.post;
-    // defaultMemberForm.name = rowData?.name;
-    // defaultMemberForm.post = "President";
-    // defaultMemberForm.name = "Thusith Kathaluwage";
-    // console.log("Row Data : ", defaultMemberForm);
-    // updateMemberName(defaultMemberForm);
-    // Sandhya Abeysekera
-    // setmembers = ;
-    //  const entry = ele!.parentElement?.parentElement;
-    //  console.log(entry);
+  const handleEdit = (rowData: Member) => {
+    setMemberForm({ ...rowData });
+    setEditing(true);
+    setError(null);
+    setSuccess(null);
   };
 
-  const handleSubmit = (editedMember: member) => {
-    updateMemberName(editedMember);
+  const handleSubmit = async () => {
+    setError(null);
+    setSuccess(null);
+
+    if (!memberForm.post.trim() || !memberForm.name.trim()) {
+      setError("Post and Name are required.");
+      return;
+    }
+
+    try {
+      if (editing && memberForm.id) {
+        const response = await fetch(
+          `${API_BASE}/api/about/members/${memberForm.id}`,
+          {
+            method: "PUT",
+            headers: getAuthHeaders(),
+            body: JSON.stringify({
+              post: memberForm.post,
+              name: memberForm.name,
+              displayOrder: memberForm.displayOrder || 0,
+            }),
+          }
+        );
+
+        if (!response.ok) {
+          const data = await response.json();
+          setError(data.error || "Update failed.");
+          return;
+        }
+        setSuccess("Member updated successfully.");
+      } else {
+        const response = await fetch(`${API_BASE}/api/about/members`, {
+          method: "POST",
+          headers: getAuthHeaders(),
+          body: JSON.stringify({
+            post: memberForm.post,
+            name: memberForm.name,
+            displayOrder: memberForm.displayOrder || 0,
+          }),
+        });
+
+        if (!response.ok) {
+          const data = await response.json();
+          setError(data.error || "Create failed.");
+          return;
+        }
+        setSuccess("Member added successfully.");
+      }
+
+      await fetchMembers();
+      setMemberForm({ ...defaultMemberForm });
+      setEditing(false);
+    } catch (err) {
+      setError("Unable to connect to server.");
+    }
   };
 
-  const updateMemberName = (editedMember: member) => {
-    setMembers((prevMembers) => {
-      return prevMembers?.map((member) => {
-        return member?.post === editedMember?.post
-          ? { ...member, name: editedMember.name }
-          : member;
-      });
-    });
-  };
+  const handleDelete = async (member: Member) => {
+    if (!member.id) return;
+    if (!window.confirm(`Delete "${member.post} - ${member.name}"?`)) return;
 
-  const addPost = (newMember: member) => {
-    setMembers((prevMembers) => {
-      return prevMembers.map((member) => {
-        return member?.post !== newMember?.post
-          ? { ...newMember, prevMembers }
-          : member;
-      });
-    });
+    try {
+      const response = await fetch(
+        `${API_BASE}/api/about/members/${member.id}`,
+        {
+          method: "DELETE",
+          headers: getAuthHeaders(),
+        }
+      );
+
+      if (!response.ok) {
+        const data = await response.json();
+        setError(data.error || "Delete failed.");
+        return;
+      }
+
+      setSuccess("Member deleted.");
+      await fetchMembers();
+    } catch (err) {
+      setError("Unable to connect to server.");
+    }
   };
 
   return (
     <div
-      className="w-[50%] md:w1-[30%] my-5 mx-auto
-                m-auto rounded-[1em] border-1 border-[#000]
-                shadow-[0px_10px_20px_0px_rgba(000,_10,_10,_0.15)] text-black"
+      className="w-[95%] md:w-[50%] my-5 mx-auto
+                m-auto rounded-[1em] border border-[#e0e0e0]
+                shadow-[0px_10px_20px_0px_rgba(0,0,0,0.1)] text-black"
     >
-      <div className="my-3 text-center font-bold">SLSQ Members Add/Update</div>
-      <div className="w-[100%] m-auto py-5">
-        <table className="w-[90%] m-auto border1-2 border1-[#fff] rounded-[.2em] p1-5">
+      <div className="flex justify-between items-center mx-5 mt-3">
+        <h2 className="text-2xl font-bold text-[#7F1734]">
+          SLSQ Members
+        </h2>
+        <div className="flex gap-2">
+          <button
+            onClick={resetForm}
+            className="bg-[#800020] text-white px-4 py-2 rounded border border-[#800020] hover:bg-white hover:text-[#800020]"
+          >
+            + New Member
+          </button>
+          <button
+            onClick={() => navigate("/admin")}
+            className="bg-[#800020] text-white px-4 py-2 rounded border border-[#800020] hover:bg-white hover:text-[#800020]"
+          >
+            Back to Admin
+          </button>
+        </div>
+      </div>
+
+      {error && (
+        <Alert severity="error" sx={{ mx: 2, mt: 1 }}>
+          {error}
+        </Alert>
+      )}
+      {success && (
+        <Alert severity="success" sx={{ mx: 2, mt: 1 }}>
+          {success}
+        </Alert>
+      )}
+
+      <div className="w-[100%] m-auto py-4">
+        <table className="w-[90%] m-auto rounded-[.2em]">
           <thead>
             <tr className="bg-[#800020] text-white rounded-[.2em]">
-              <td className="w-[30%]">Post</td>
-              <td className="w-[60%]">Name</td>
-              <td className="w-[10%]">Action</td>
+              <td className="w-[25%] p-2">Post</td>
+              <td className="w-[45%] p-2">Name</td>
+              <td className="w-[30%] p-2">Action</td>
             </tr>
           </thead>
           <tbody>
-            {members.map((member, index) => {
-              return (
-                <tr className="border-2 border-[#fff]" key={index}>
-                  <td>{member.post}</td>
-                  <td>{member.name}</td>
-                  <td>
-                    <button onClick={() => handleEdit(member)}>Edit</button>
-                    {/* <Typography
-                      color="gray"
-                      className="text-center font-normal py-1"
-                    >
-                      <Button
-                        variant="contained"
-                        style={{
-                          width: "30%",
-                          margin: "0px",
-                          backgroundColor: "#800020",
-                          color: "#fff",
-                        }}
-                        onClick={() => handleEdit({ member })}
-                      >
-                        Edit
-                      </Button>
-                    </Typography> */}
-                  </td>
-                </tr>
-              );
-            })}
+            {members.map((member, index) => (
+              <tr
+                key={member.id || index}
+                className="border-b border-[#e0e0e0]"
+                style={{
+                  backgroundColor: index % 2 === 0 ? "#fff" : "#f5e6ea",
+                }}
+              >
+                <td className="p-2">{member.post}</td>
+                <td className="p-2">{member.name}</td>
+                <td className="p-2">
+                  <button
+                    className="mr-3 text-blue-600 underline text-sm"
+                    onClick={() => handleEdit(member)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="text-red-600 underline text-sm"
+                    onClick={() => handleDelete(member)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
-          <tfoot></tfoot>
         </table>
       </div>
-      <div className="flex w-[100%] m-auto">
+
+      <div className="flex w-[100%] m-auto pb-6">
         <div className="flex flex-col w-[50%] m-auto">
           <Typography
-            style={{ marginTop: "30px" }}
+            style={{ marginTop: "10px" }}
             variant="h6"
             className="flex flex-col"
           >
             Post
           </Typography>
           <TextField
-            error
             name="post"
             label="Post"
             margin="normal"
             size="small"
-            disabled
-            // className="text-[#000]"
-            //    defaultValue={email}
-            //   onChange={}
-            //   helperText="Incorrect entry."
+            value={memberForm.post}
+            disabled={editing}
+            onChange={handleChange}
           />
           <Typography
-            style={{ marginTop: "30px" }}
+            style={{ marginTop: "10px" }}
             variant="h6"
             className="flex flex-col"
           >
             Member name
           </Typography>
           <TextField
-            error
             name="name"
             label="Name"
             margin="normal"
             size="small"
-            // className="text-[#000]"
-            //    defaultValue={email}
+            value={memberForm.name}
             onChange={handleChange}
-            //   helperText="Incorrect entry."
           />
-          <div className="flex m-auto">
-            <Typography color="gray" className="text-center font-normal py-1">
-              <Button
-                variant="contained"
-                style={{
-                  width: "30%",
-                  margin: "0px",
-                  backgroundColor: "#800020",
-                  color: "#fff",
-                }}
-                onClick={() => handleSubmit(memberForm)}
-              >
-                Save
-              </Button>
-            </Typography>
-            <Typography color="gray" className="text-center font-normal py-1">
-              <Button
-                variant="contained"
-                style={{
-                  width: "30%",
-                  margin: "0px",
-                  backgroundColor: "#800020",
-                  color: "#fff",
-                }}
-                onClick={() => handleCancel()}
-              >
-                Cancel
-              </Button>
-            </Typography>
+          <div className="flex justify-center gap-4 mt-4">
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "#800020",
+                color: "#fff",
+                minWidth: "100px",
+              }}
+              onClick={handleSubmit}
+            >
+              {editing ? "Update" : "Save"}
+            </Button>
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "#800020",
+                color: "#fff",
+                minWidth: "100px",
+              }}
+              onClick={resetForm}
+            >
+              Cancel
+            </Button>
           </div>
         </div>
       </div>

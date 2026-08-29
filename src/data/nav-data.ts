@@ -1,6 +1,6 @@
 import AboutUs from "../about-us/about-us.component";
 import ContactUs from "../contact-us/contact-us.component";
-import Publications from "../publications/publications.component1";
+import Publications from "../publications/publications.component";
 import PhotoGallery from "../photo-gallery/photo-gallery.component";
 import NoticeBoard from "../notice-board/notice-board.component";
 import Home from "../home.component";

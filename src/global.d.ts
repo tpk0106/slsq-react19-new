@@ -1,3 +1,4 @@
+declare module "*.css";
 declare module "*.pdf";
 declare module "*.doc";
 declare module "*.jpg";

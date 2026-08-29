@@ -1,6 +1,6 @@
-import React, { ChangeEvent, Component, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { User } from "../model/user";
-// import { z } from "zod";
+import { API_BASE } from "../config/api";
 import {
   Box,
   FormControl,
@@ -10,94 +10,215 @@ import {
   InputAdornment,
   IconButton,
   Button,
+  Alert,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const defaultSignInForm: User = {
   userId: "",
   password: "",
 };
-// const [signupForm, setSignupForm] = useState(defaultSignupForm);
-// const { userId, password }: User = signinForm;
+
+interface MenuCard {
+  title: string;
+  description: string;
+  route: string;
+  icon: string;
+}
+
+const menuCards: MenuCard[] = [
+  {
+    title: "Members",
+    description: "Add, edit or delete committee members",
+    route: "/members",
+    icon: "\u{1F465}",
+  },
+  {
+    title: "Past Presidents",
+    description: "Manage past presidents list",
+    route: "/presidents",
+    icon: "\u{1F3DB}",
+  },
+  {
+    title: "Events",
+    description: "Manage events and upload images",
+    route: "/events-admin",
+    icon: "\u{1F4C5}",
+  },
+  {
+    title: "Notice Board",
+    description: "Manage notice board posters",
+    route: "/noticeboard-admin",
+    icon: "\u{1F4CC}",
+  },
+  {
+    title: "Publications",
+    description: "Upload and manage newsletters",
+    route: "/publications-admin",
+    icon: "\u{1F4F0}",
+  },
+  {
+    title: "Photo Gallery",
+    description: "Manage photo galleries and images",
+    route: "/gallery-admin",
+    icon: "\u{1F4F7}",
+  },
+  {
+    title: "Create User",
+    description: "Register a new admin user",
+    route: "/register",
+    icon: "\u{1F511}",
+  },
+];
 
 const Administrator = () => {
-  // const signInFormSchema = z.object({
-  //   email: z.coerce.string().min(5, "email required"),
-  //   password: z.coerce.string().min(8, "password required"),
-  // });
-
-  // type signInFormData = z.infer<typeof signInFormSchema>;
-
   const [showPassword, setShowPassword] = useState(false);
   const [signInForm, setSignInForm] = useState<User>(defaultSignInForm);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [userName, setUserName] = useState("");
 
-  // const signInFormSchema = z.object({
-  //   email: z.coerce.string().min(5, "email required"),
-  //   password: z.coerce.string().min(8, "password required"),
-  // });
-
-  // type signInFormData = z.infer<typeof signInFormSchema>;
-  // type signInFormErrors = Partial<Record<keyof signInFormData, string[]>>;
   const navigate = useNavigate();
-  // const handleSubmit = ({ children }: any) => {
-  const handleSubmit = () => {
-    // Replace this with your actual authentication check (e.g., checking a token in localStorage, a global state, or a context)
-    const isAuthenticated = localStorage.getItem("slsq-token");
 
-    // if (!isAuthenticated) {
-    //   // Redirect to the login page if not authenticated
-    //   return <Navigate to="/admin" replace />;
-    // }
-
-    // Render the children (protected components) if authenticated
-    // return children;
-    navigate("/members");
-  };
+  useEffect(() => {
+    const token = localStorage.getItem("slsq-token");
+    const user = localStorage.getItem("slsq-user");
+    if (token) {
+      setIsLoggedIn(true);
+      if (user) {
+        try {
+          const parsed = JSON.parse(user);
+          setUserName(parsed.firstname || parsed.username || "");
+        } catch {
+          setUserName("");
+        }
+      }
+    }
+  }, []);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  // const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-  // const [errors, setErrors] = useState<signInFormErrors>({});
-
-  //   //console.log("name change ", event.target);
-  //   const { name, value } = event.target;
-  //   setSignupForm({ ...signupForm, [name]: value });
-  //   //console.log("signup form : ", { ...signupForm });
-  //   const newErrors = validateForm(signupForm);
-  //   setErrors(newErrors);
-  // };
-
-  // const validateForm = (data: signInFormData): signInFormErrors => {
-  //   try {
-  //     signInFormSchema.parse(data);
-  //     return {};
-  //   } catch (error) {
-  //     if (error instanceof z.ZodError) {
-  //       return error.flatten().fieldErrors;
-  //     }
-  //     return {};
-  //   }
-  // };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setSignInForm({ ...signInForm, [name]: value });
-
-    // const newErrors = validateForm(signInForm);
-    // setErrors(newErrors);
   };
 
+  const handleLogin = async () => {
+    setError(null);
+
+    if (!signInForm.userId.trim() || !signInForm.password.trim()) {
+      setError("Please enter username and password.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await fetch(`${API_BASE}/api/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: signInForm.userId,
+          password: signInForm.password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.error || "Login failed. Please check your credentials.");
+        return;
+      }
+
+      localStorage.setItem("slsq-token", data.token);
+      localStorage.setItem("slsq-user", JSON.stringify(data.user));
+      setIsLoggedIn(true);
+      setUserName(data.user?.firstname || data.user?.username || "");
+      setSignInForm(defaultSignInForm);
+    } catch (err) {
+      setError("Unable to connect to server. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("slsq-token");
+    localStorage.removeItem("slsq-user");
+    setIsLoggedIn(false);
+    setUserName("");
+    setSignInForm(defaultSignInForm);
+  };
+
+  // -- Dashboard (after login) --
+  if (isLoggedIn) {
+    return (
+      <div
+        className="w-[95%] md:w-[60%] my-5 mx-auto
+                  rounded-[1em] border border-[#e0e0e0]
+                  shadow-[0px_10px_20px_0px_rgba(0,0,0,0.1)] text-black"
+      >
+        <div className="flex justify-between items-center px-6 py-4 border-b border-[#e0e0e0]">
+          <div>
+            <Typography variant="h5" style={{ fontWeight: 700, color: "#800020" }}>
+              Admin Dashboard
+            </Typography>
+            {userName && (
+              <Typography variant="body2" style={{ color: "#666", marginTop: 2 }}>
+                Welcome, {userName}
+              </Typography>
+            )}
+          </div>
+          <Button
+            variant="outlined"
+            size="small"
+            style={{ borderColor: "#800020", color: "#800020" }}
+            onClick={handleLogout}
+          >
+            Logout
+          </Button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
+          {menuCards.map((card) => (
+            <div
+              key={card.route}
+              className="flex items-center gap-4 p-5 rounded-lg border border-[#e0e0e0]
+                         cursor-pointer transition-all duration-200
+                         hover:border-[#800020] hover:shadow-md"
+              onClick={() => navigate(card.route)}
+            >
+              <div className="text-3xl">{card.icon}</div>
+              <div>
+                <Typography
+                  variant="h6"
+                  style={{ fontWeight: 600, color: "#800020" }}
+                >
+                  {card.title}
+                </Typography>
+                <Typography variant="body2" style={{ color: "#666" }}>
+                  {card.description}
+                </Typography>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // -- Login form (before login) --
   return (
     <div
       className="w-[100%] md:w-[30%] my-5
                 m-auto rounded-[1em] border-1 border-[#000]
-                shadow-[0px_10px_20px_0px_rgba(000,_10,_10,_0.15)] text1-black"
+                shadow-[0px_10px_20px_0px_rgba(0,0,0,0.15)] text-black"
     >
       <div className="flex">
         <Box component="form" className="flex mx-auto">
           <div className="flex justify-around mt-10">
-            {/* <form className="w-80 max-w-screen-lg sm:w-96"> */}
             <div className="flex flex-col gap1-4 justify-around">
               <FormControl
                 sx={{
@@ -107,13 +228,14 @@ const Administrator = () => {
                 }}
                 variant="outlined"
               >
-                <Typography
-                  variant="h4"
-                  // color="blue-gray"
-                  // style={{ marginBottom: "13px" }}
-                >
-                  Sign In
-                </Typography>
+                <Typography variant="h4">Sign In</Typography>
+
+                {error && (
+                  <Alert severity="error" sx={{ mt: 2 }}>
+                    {error}
+                  </Alert>
+                )}
+
                 <Typography
                   style={{ marginTop: "30px" }}
                   variant="h6"
@@ -122,21 +244,13 @@ const Administrator = () => {
                   User Id
                 </Typography>
                 <TextField
-                  error
                   name="userId"
                   label="User Id"
                   margin="normal"
                   size="small"
-                  // className="text-[#000]"
-                  //    defaultValue={email}
+                  value={signInForm.userId}
                   onChange={handleChange}
-                  //   helperText="Incorrect entry."
                 />
-                {/* {errors.email && (
-                    <div className="flex w-full py-0 text-red-600 justify-start ml-0 text-sm z-10">
-                      {errors.email}
-                    </div>
-                  )} */}
 
                 <Typography variant="h6" className="flex flex-col mb-2">
                   Password
@@ -145,10 +259,9 @@ const Administrator = () => {
                 <OutlinedInput
                   type={showPassword ? "text" : "password"}
                   style={{ marginTop: 15, color: "#000" }}
-                  error
                   name="password"
-                  label="Password"
                   size="small"
+                  value={signInForm.password}
                   onChange={handleChange}
                   endAdornment={
                     <InputAdornment position="end">
@@ -166,11 +279,6 @@ const Administrator = () => {
                     </InputAdornment>
                   }
                 />
-                {/* {errors.password && (
-                    <div className="flex w-full py-0 text-red-600 justify-start ml-0 text-sm z-10">
-                      {errors.password}
-                    </div>
-                  )} */}
 
                 <Typography
                   color="gray"
@@ -178,20 +286,20 @@ const Administrator = () => {
                 >
                   <Button
                     variant="contained"
+                    disabled={loading}
                     style={{
                       width: "100%",
                       margin: "0px",
                       backgroundColor: "#800020",
                       color: "#fff",
                     }}
-                    onClick={(event: any) => handleSubmit()}
+                    onClick={() => handleLogin()}
                   >
-                    Sign in
+                    {loading ? "Signing in..." : "Sign in"}
                   </Button>
                 </Typography>
               </FormControl>
             </div>
-            {/* </form> */}
           </div>
         </Box>
       </div>

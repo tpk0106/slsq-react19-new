@@ -1,104 +1,86 @@
-import { MouseEvent, useState } from "react";
+import { useEffect, useState } from "react";
+import Lightbox from "yet-another-react-lightbox";
+import PLUGIN_ZOOM from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/styles.css";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
+import { API_BASE } from "../config/api";
 
-import DisplayImage from "./display-image.component";
+// ─── Types ───────────────────────────────────────────────────────
 
-import {
-  SinhalaNewYear2021,
-  MemebersAndFriendsLunch,
-  FoundersDayCelebrations2019,
-  SLSQInvitedToBhutanKings41stBirthdayCelebrations,
-  TalkByTinaFaulk,
-  CleanWaterAppeal,
-  SriLankanNewYearCulturalConcert2014,
-  BookLaunch,
-  NationalDanceTroupe2017,
-  MembersAndFriendsGetTogether,
-  SrilankanNewYearCulturalConcert2015,
-  SrilankanNewYearCulturalConcert2016,
-  SrilankanNewYearCulturalConcert2017,
-  SrilankanNewYearCulturalConcert2018,
-  DancingSchoolOpeningCeremony2020,
-} from "../data/images";
-import Button from "../generic/button.component";
-import { ImageSets } from "../data/image-sets";
+interface GalleryImage {
+  Id: number;
+  ImageUrl: string;
+  Caption: string | null;
+  DisplayOrder: number;
+}
 
-type src = {
-  src: string;
-};
+interface Gallery {
+  Id: number;
+  Title: string;
+  Description: string | null;
+  images: GalleryImage[];
+}
 
-let imagesSet: src[];
+// ─── Component ───────────────────────────────────────────────────
 
-// const infoSymbol = "\u2139"; // Unicode Information Source (U+2139)
 const PhotoGallery = () => {
-  const [showGallery, setShowGallery] = useState(false);
+  const [galleries, setGalleries] = useState<Gallery[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-    const galleryname = event.currentTarget as HTMLElement;
+  // Lightbox state
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxSlides, setLightboxSlides] = useState<{ src: string }[]>([]);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
-    imagesSet = [];
+  useEffect(() => {
+    const fetchGalleries = async () => {
+      try {
+        const res = await fetch(`${API_BASE}/api/gallery`);
+        if (!res.ok) throw new Error("Failed to load galleries.");
+        const data: Gallery[] = await res.json();
+        setGalleries(data);
+      } catch (err: any) {
+        setError(err.message || "Failed to load galleries.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    switch (galleryname.textContent?.trim()) {
-      case "Sinhala And Tamil New Year 2021":
-        imagesSet = SinhalaNewYear2021;
-        break;
-      case "Members And Friends Lunch 2020":
-        imagesSet = MemebersAndFriendsLunch;
-        break;
-      case "Dance School Opening Ceremony 2020":
-        imagesSet = DancingSchoolOpeningCeremony2020;
-        break;
-      case "Founders Day Celebrations 2019":
-        imagesSet = FoundersDayCelebrations2019;
-        break;
-      case "Sri Lankan New Year Cultural Concert 2018":
-        console.log("2018");
-        imagesSet = SrilankanNewYearCulturalConcert2018;
-        break;
-      case "SLSQ Invited to Bhutan King’s 41st Birthday Celebrations":
-        imagesSet = SLSQInvitedToBhutanKings41stBirthdayCelebrations;
-        break;
-      case "Talk by Tina Faulk":
-        imagesSet = TalkByTinaFaulk;
-        break;
-      case "Clean Water Appeal":
-        imagesSet = CleanWaterAppeal;
-        break;
-      case "Sri Lankan New Year Cultural Concert 2014":
-        imagesSet = SriLankanNewYearCulturalConcert2014;
-        break;
-      case "Book Launch -Dr Nimal Sedera 2017":
-        imagesSet = BookLaunch;
-        break;
-      case "National Dance Troupe 2017":
-        imagesSet = NationalDanceTroupe2017;
-        break;
-      case "Members and Friends Get-Together":
-        imagesSet = MembersAndFriendsGetTogether;
-        break;
-      case "Sri Lankan New Year Cultural Concert 2015":
-        imagesSet = SrilankanNewYearCulturalConcert2015;
-        break;
-      case "Sri Lankan New Year Cultural Concert 2016":
-        console.log("SrilankanNewYearCulturalConcert2016");
-        imagesSet = SrilankanNewYearCulturalConcert2016;
-        break;
-      case "Sri Lankan New Year Cultural Concert 2017":
-        imagesSet = SrilankanNewYearCulturalConcert2017;
-        break;
-    }
-    setShowGallery(true);
+    fetchGalleries();
+  }, []);
+
+  const handleGalleryClick = (gallery: Gallery) => {
+    if (!gallery.images || gallery.images.length === 0) return;
+
+    const slides = gallery.images.map((img) => ({
+      src: `${API_BASE}${img.ImageUrl}`,
+    }));
+
+    setLightboxSlides(slides);
+    setLightboxIndex(0);
+    setLightboxOpen(true);
   };
 
-  //const md = new remarkable();
+  if (loading) {
+    return (
+      <div className="mx-5 pb-5">
+        <div className="container m-auto w-[100%] mt-5 mb-10 text-center py-10">
+          <p className="text-lg">Loading galleries...</p>
+        </div>
+      </div>
+    );
+  }
 
-  // const markup = {
-  //   __html:
-  //     "SLSQ Invited to Bhutan King’s 41" +
-  //     <sup>st</sup> +
-  //     "Birthday Celebrations",
-  // };
-
-  //const html = renderToString(markup as ReactNode);
+  if (error) {
+    return (
+      <div className="mx-5 pb-5">
+        <div className="container m-auto w-[100%] mt-5 mb-10 text-center py-10">
+          <p className="text-lg text-red-600">{error}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -109,29 +91,44 @@ const PhotoGallery = () => {
         >
           <div className="flex flex-col text-center py-5 text-base md:text-[20px] lg:text-[30px]">
             <div>
-              {ImageSets.map((caption, index) => {
-                return (
-                  <Button
-                    onClick={(e) => handleClick(e)}
-                    icon={null}
-                    caption={caption.caption}
-                    classname="mb-5 font-bold text-white shadow-[0px_0px_rgba(0,0,0,1)] hover:drop-shadow-[2px_2px_rgba(0,0,0,.5)]  hover:cursor-pointer"
-                    key={index}
-                  />
-                );
-              })}
+              {galleries.map((gallery) => (
+                <button
+                  key={gallery.Id}
+                  onClick={() => handleGalleryClick(gallery)}
+                  className="mb-5 font-bold text-white shadow-[0px_0px_rgba(0,0,0,1)] hover:drop-shadow-[2px_2px_rgba(0,0,0,.5)] hover:cursor-pointer block w-full text-center bg-transparent border-none p-2"
+                  disabled={!gallery.images || gallery.images.length === 0}
+                  style={{
+                    opacity:
+                      !gallery.images || gallery.images.length === 0 ? 0.5 : 1,
+                  }}
+                >
+                  {gallery.Title}
+                  {gallery.images && gallery.images.length > 0 && (
+                    <span className="text-sm md:text-base lg:text-lg ml-2 opacity-70">
+                      ({gallery.images.length})
+                    </span>
+                  )}
+                </button>
+              ))}
             </div>
           </div>
-          <div>
-            {showGallery && (
-              <DisplayImage
-                images={imagesSet}
-                setParentState={() => setShowGallery(false)}
-              />
-            )}
-          </div>
+
+          {galleries.length === 0 && (
+            <div className="text-center py-10">
+              <p className="text-lg text-gray-400">No galleries available.</p>
+            </div>
+          )}
         </div>
       </div>
+
+      {/* Lightbox Carousel */}
+      <Lightbox
+        open={lightboxOpen}
+        close={() => setLightboxOpen(false)}
+        slides={lightboxSlides}
+        index={lightboxIndex}
+        plugins={[PLUGIN_ZOOM]}
+      />
     </>
   );
 };

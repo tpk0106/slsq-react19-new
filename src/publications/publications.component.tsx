@@ -1,10 +1,4 @@
-import Publication from "../generic/publication.component";
-import { PUBLICATIONS } from "../data/publications";
-
-// older version
-//import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-//import "react-pdf/dist/esm/Page/TextLayer.css";
-// version 10.1.0
+import { useEffect, useState } from "react";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 
@@ -12,173 +6,223 @@ import Membership_form_Revised from "../assets/publications/Membership-Form-Revi
 import NominationForm from "../assets/publications/NominationForm.doc";
 import ProxyForm from "../assets/publications/ProxyForm.doc";
 import Download from "../generic/download.component";
-import { useEffect, useRef } from "react";
-// import { Console } from "console";
-// import { DivideIcon } from "@heroicons/react/24/outline";
+import PdfButton from "../generic/pdf-button.component";
+import { API_BASE } from "../config/api";
+
+// ─── Types ───────────────────────────────────────────────────────
+
+interface Publication {
+  Id: number;
+  Title: string;
+  Year: number;
+  Month: number;
+  Description: string | null;
+  PdfUrl: string;
+}
+
+interface YearGroup {
+  year: number;
+  publications: Publication[];
+}
+
+const MONTH_NAMES = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+
+// ─── Helpers ────────────────────────────────────────────────────
+
+const handleOpenPdf = (pdfUrl: string) => {
+  window.open(`${API_BASE}${pdfUrl}`, "_blank");
+};
+
+const handleDownloadFile = (fileUrl: string, fileName: string) => {
+  fetch(fileUrl).then((res) => {
+    res.blob().then((blob) => {
+      const blobUrl = window.URL.createObjectURL(blob);
+      const aLink = document.createElement("a");
+      aLink.href = blobUrl;
+      aLink.download = fileName;
+      aLink.click();
+    });
+  });
+};
+
+// ─── Component ───────────────────────────────────────────────────
 
 const Publications = () => {
-  // const handleDownloadConstitutionClick = () => {
-  //   // const ele = e.target as HTMLElement;
-  //   // let url = ele.attributes.item(0)?.value.substring(1);
-
-  //   fetch(constitution_pdf).then((res) => {
-  //     res.blob().then((blob) => {
-  //       const fileUrl = window.URL.createObjectURL(blob);
-  //       const aLink = document.createElement('a');
-  //       aLink.href = fileUrl;
-  //       aLink.download = 'SLSQ-Constitution';
-  //       aLink.click();
-  //     });
-  //   });
-
-  //   return;
-  // };
-
-  // const goToTop = document.getElementById("go-to-top");
-  const targetRef = useRef<HTMLDivElement | null>(null);
+  const [yearGroups, setYearGroups] = useState<YearGroup[]>([]);
+  const [constitutionPubs, setConstitutionPubs] = useState<Publication[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Scroll to the element when the component mounts or a dependency changes
-    if (targetRef.current) {
-      targetRef.current.scrollIntoView({ behavior: "smooth" }); // 'smooth' for animated scroll
-    }
-  }, []); // Empty dependency array means it runs once on mount
+    const fetchPublications = async () => {
+      try {
+        const res = await fetch(`${API_BASE}/api/publications`);
+        if (!res.ok) throw new Error("Failed to load publications.");
+        const data: Publication[] = await res.json();
 
-  const handleDownloadMembershipFormClick = () => {
-    fetch(Membership_form_Revised).then((res) => {
-      res.blob().then((blob) => {
-        const fileUrl = window.URL.createObjectURL(blob);
-        const aLink = document.createElement("a");
-        aLink.href = fileUrl;
-        aLink.download = "Membership-Form-Revised";
-        aLink.click();
-      });
-    });
-  };
+        // Separate Constitution documents from regular newsletters
+        const newsletters = data.filter(
+          (pub: Publication) => !pub.Title.toLowerCase().includes("constitution")
+        );
+        const constitutionDocs = data.filter(
+          (pub: Publication) => pub.Title.toLowerCase().includes("constitution")
+        );
+        setConstitutionPubs(constitutionDocs);
 
-  const handleDownloadNominationFormClick = () => {
-    fetch(NominationForm).then((res) => {
-      res.blob().then((blob) => {
-        const fileUrl = window.URL.createObjectURL(blob);
-        const aLink = document.createElement("a");
-        aLink.href = fileUrl;
-        aLink.download = "NominationForm";
-        aLink.click();
-      });
-    });
-  };
+        // Group newsletters by year, sorted descending
+        const grouped = new Map<number, Publication[]>();
+        for (const pub of newsletters) {
+          if (!grouped.has(pub.Year)) {
+            grouped.set(pub.Year, []);
+          }
+          grouped.get(pub.Year)!.push(pub);
+        }
 
-  const handleDownloadProxyFormClick = () => {
-    fetch(ProxyForm).then((res) => {
-      res.blob().then((blob) => {
-        const fileUrl = window.URL.createObjectURL(blob);
-        const aLink = document.createElement("a");
-        aLink.href = fileUrl;
-        aLink.download = "ProxyForm";
-        aLink.click();
-      });
-    });
-  };
+        const groups: YearGroup[] = Array.from(grouped.entries())
+          .sort((a, b) => b[0] - a[0])
+          .map(([year, publications]) => ({
+            year,
+            publications: publications.sort((a, b) => a.Month - b.Month),
+          }));
+
+        setYearGroups(groups);
+      } catch (err: any) {
+        setError(err.message || "Failed to load publications.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPublications();
+  }, []);
 
   return (
     <>
-      <div>
+      <div className="pb-5">
         <div
-          id="id1"
-          className="max-w-[90%] m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] mt-0 my-5"
-          // ref={targetRef}
+          className="max-w-[90%] m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] mt-5 my-5"
         >
-          <div
-            className="flex m-auto"
-            // ref={targetRef}
-          >
+          <div className="flex m-auto">
             <section className="py-10 px-5 w-[100%]">
               <div className="flex flex-col md:flex-row m1-auto justify-around">
                 <div>
-                  {/* <div className="flex flex-col max1-w-[70%] m-auto justify-around text-base md:text-2xl sm:flex-row items-center"> */}
-                  {PUBLICATIONS.map((publication, index) => {
-                    return (
-                      <>
-                        <div
-                          key={index}
-                          className="flex flex-col md:flex-row shadow-[0px_5px_10px_0px_rgba(139,_0,_0,_0.15)] p1-5 border-[1px] w-[100%]
-                                          my-4 rounded-[14px] bg-[#B222] text-[#7F1734] items-center border-white md:w-[95%] lg:w-[100%] m1-auto"
-                        >
-                          <div
-                            className="mx-4 md:mx-10 my-5 flex-col items-center m-auto text-center 
-                                          text-sm md:text-[1.0em] lg:text-[1.0em] xl:text-[1.3em] 2xl:text-[1.3em]"
-                          >
-                            <div className="flex items-center w-[100%]">
-                              <div className="mx-auto">{publication.year}</div>
-                            </div>
-                            <hr className="border-1 border-[#800020] my1-3 p-2" />
-                            <div className="flex justify-between flex-col md:flex-row w-[100%] px-2">
-                              {publication.months.length === 0 && (
-                                <div> No publications for this year</div>
-                              )}
-                              {publication.months.map((m, i) => {
-                                return (
-                                  <div className="py-5">
-                                    <Publication
-                                      year={Number(publication.year)}
-                                      months={publication.months}
-                                      month={m.date}
-                                      file={m.file}
-                                      key={i}
-                                    />
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </div>
+                  {loading && (
+                    <div className="text-center py-10 text-lg">
+                      Loading publications...
+                    </div>
+                  )}
+
+                  {error && (
+                    <div className="text-center py-10 text-lg text-red-600">
+                      {error}
+                    </div>
+                  )}
+
+                  {!loading && !error && yearGroups.length === 0 && (
+                    <div className="text-center py-10 text-lg text-gray-400">
+                      No publications available.
+                    </div>
+                  )}
+
+                  {yearGroups.map((group) => (
+                    <div
+                      key={group.year}
+                      className="flex flex-col md:flex-row shadow-[0px_5px_10px_0px_rgba(139,_0,_0,_0.15)] border-[1px] w-[100%]
+                                 my-4 rounded-[14px] bg-[#B222] text-[#7F1734] items-center border-white md:w-[95%] lg:w-[100%]"
+                    >
+                      <div
+                        className="mx-4 md:mx-10 my-5 flex-col items-center m-auto text-center
+                                   text-sm md:text-[1.0em] lg:text-[1.0em] xl:text-[1.3em] 2xl:text-[1.3em]"
+                      >
+                        <div className="flex items-center w-[100%]">
+                          <div className="mx-auto">{group.year}</div>
                         </div>
-                      </>
-                    );
-                  })}
-                  {/* </div> */}
+                        <hr className="border-1 border-[#800020] p-2" />
+                        <div className="flex justify-between flex-col md:flex-row w-[100%] px-2">
+                          {group.publications.length === 0 && (
+                            <div>No publications for this year</div>
+                          )}
+
+                          {group.publications.map((pub) => (
+                            <PdfButton
+                              key={pub.Id}
+                              label={MONTH_NAMES[pub.Month - 1] || `Month ${pub.Month}`}
+                              onClick={() => handleOpenPdf(pub.PdfUrl)}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </section>
           </div>
         </div>
 
+        {/* Constitution Section */}
+        {constitutionPubs.length > 0 && (
+          <div className="max-w-[90%] m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] mt-0 my-5">
+            <div className="flex m-auto">
+              <section className="py-10 px-5 w-[100%]">
+                <div
+                  className="flex flex-col shadow-[0px_5px_10px_0px_rgba(139,_0,_0,_0.15)] border-[1px] w-[100%]
+                             my-4 rounded-[14px] bg-[#B222] text-[#7F1734] items-center border-white md:w-[95%] lg:w-[100%]"
+                >
+                  <div
+                    className="mx-4 md:mx-10 my-5 flex-col items-center m-auto text-center
+                               text-sm md:text-[1.0em] lg:text-[1.0em] xl:text-[1.3em] 2xl:text-[1.3em]"
+                  >
+                    <div className="flex items-center w-[100%]">
+                      <div className="mx-auto font-bold">SLSQ Constitution</div>
+                    </div>
+                    <hr className="border-1 border-[#800020] p-2" />
+                    <div className="flex justify-center flex-col md:flex-row w-[100%] px-2">
+                      {constitutionPubs.map((pub) => (
+                        <PdfButton
+                          key={pub.Id}
+                          label={pub.Title}
+                          onClick={() => handleOpenPdf(pub.PdfUrl)}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        )}
+
         <div className="max-w-[90%] m-auto shadow-[0px_10px_20px_0px_rgba(139,_0,_0,_0.15)] mt-0 my-5">
           <div className="flex m-auto">
             <section className="py-10 px-5 w-[100%]">
               <div
-                className="flex flex-col md:flex-row w-[100%] m-auto justify-around 
+                className="flex flex-col md:flex-row w-[100%] m-auto justify-around
                            text-sm md:text-[0.7em] lg:text-[1.0em] xl:text-[1.3em] 2xl:text-[1.3em] items-center"
               >
                 <div>
                   <Download
-                    handleClick={() => handleDownloadMembershipFormClick()}
+                    handleClick={() => handleDownloadFile(Membership_form_Revised, "Membership-Form-Revised")}
                     text="Membership Form download"
                   />
                 </div>
                 <div>
                   <Download
-                    handleClick={() => handleDownloadNominationFormClick()}
+                    handleClick={() => handleDownloadFile(NominationForm, "NominationForm")}
                     text="Nomination Form download"
                   />
                 </div>
                 <div>
                   <Download
-                    handleClick={() => handleDownloadProxyFormClick()}
+                    handleClick={() => handleDownloadFile(ProxyForm, "ProxyForm")}
                     text="Proxy Form download"
                   />
                 </div>
               </div>
             </section>
-            {/* <button
-              id="go-to-top"
-              onClick={() => {
-                const ele = document.getElementById("header");
-                console.log(ele);
-                ele?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              Go to top
-            </button> */}
           </div>
         </div>
       </div>
@@ -187,5 +231,3 @@ const Publications = () => {
 };
 
 export default Publications;
-
-// https://stackoverflow.com/questions/44561037/loop-in-return-statement-of-a-component-in-react-js

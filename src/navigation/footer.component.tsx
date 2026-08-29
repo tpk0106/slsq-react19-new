@@ -17,7 +17,7 @@ const Footer = ({ clock }: { clock: React.ReactElement }) => {
   return (
     <>
       <div
-        className="w-[100%] bg-[#470000] text-[#fff] h-[655px] md:h-[400px] lg:h-auto 
+        className="w-[100%] bg-[#470000] text-[#fff]
                       shadow-[inset_0px_5px_15px_-3px_rgba(0,_0,_0,_0.2)]"
       >
         <div className="flex flex-col">
@@ -104,7 +104,7 @@ const Footer = ({ clock }: { clock: React.ReactElement }) => {
                 {/* this is a border with elephant display in mobile*/}
                 <div
                   id="border-wrapper"
-                  className="flex flex-col md:hidden w-[100%] h-[65px]"
+                  className="flex flex-col md:hidden w-[100%] h-[50px] sm:h-[65px]"
                 >
                   <div className="flex h-[100%]">
                     <div id="left-image" className="w-[50%]"></div>
@@ -118,7 +118,7 @@ const Footer = ({ clock }: { clock: React.ReactElement }) => {
           {/* this is a border with elephant display */}
           <div
             id="border-wrapper"
-            className="hidden md:flex flex-col w-[100%] md:h-[145px] 2xl:h-[130px] xl:h-[155px]"
+            className="hidden md:flex flex-col w-[100%] md:h-[120px] lg:h-[145px] xl:h-[200px] 2xl:h-[250px]"
           >
             <div className="flex h-[100%]">
               <div id="left-image" className="w-[50%]"></div>
