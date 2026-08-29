@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
 
-const API_BASE = process.env.REACT_APP_API_URL || "http://localhost:5000";
+import { API_BASE } from "../config/api";
 
 interface Member {
   post: string;
