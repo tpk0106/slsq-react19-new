@@ -1,3 +1,4 @@
+import { resolveAsset } from "../utils/resolve-asset";
 import { useResizeObserver } from "@wojtekmaj/react-hooks";
 import { useState, useCallback } from "react";
 import { pdfjs, Document, Page } from "react-pdf";
@@ -136,7 +137,7 @@ const PDFGenerator = ({ pdfurl, setParentState, key }: pdf) => {
                   </div>
                   <Document
                     className="flex flex-col grow m-auto"
-                    file={require("../assets/" + `${newUrl}` + filename)}
+                    file={resolveAsset(require("../assets/" + `${newUrl}` + filename))}
                     onLoadSuccess={onDocumentLoadSuccess}
                     options={options}
                   >

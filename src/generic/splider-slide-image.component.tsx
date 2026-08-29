@@ -1,4 +1,5 @@
 import { SplideSlide } from "@splidejs/react-splide";
+import { resolveAsset } from "../utils/resolve-asset";
 
 type carousal = {
   imageUrl: string;
@@ -9,14 +10,13 @@ type carousal = {
 const SpliderSlideImage = ({ ...props }: carousal) => {
   const index = props.imageUrl.lastIndexOf("/");
   const file = props.imageUrl.substring(index + 1);
+  const mainSrc = resolveAsset(require("../assets/images/" + file));
+  const mobileSrc = resolveAsset(require("../assets/images/mobile/" + file));
   return (
     <SplideSlide>
       <img
-        // data-splide-lazy={require("../assets/images/" + file)}
-        src={require("../assets/images/" + file)}
-        srcSet={`${require("../assets/images/" + file)} 1080w, 
-                 ${require("../assets/images/mobile/" + file)} 480w`}
-        // sizes="(max-width: 2560px) 2560px"
+        src={mainSrc}
+        srcSet={`${mainSrc} 1080w, ${mobileSrc} 480w`}
         alt={props.alt}
         className={props.classname}
       />
