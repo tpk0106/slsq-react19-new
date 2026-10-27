@@ -1,0 +1,23 @@
+# systemd unit for the SLSQ Node.js API - installed by 04-deploy-app.sh
+[Unit]
+Description=SLSQ Node.js API
+After=network-online.target mssql-server.service
+Wants=network-online.target mssql-server.service
+
+[Service]
+Type=simple
+User=__APP_USER__
+Group=__APP_USER__
+WorkingDirectory=__APP_DIR__/slsq-backend
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node dist/server.js
+Restart=always
+RestartSec=5
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

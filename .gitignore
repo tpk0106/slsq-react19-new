@@ -25,3 +25,9 @@ yarn-error.log*
 .env
 
 
+
+# Ubuntu deploy settings (per server)
+deploy/linux/slsq.conf
+
+# Claude working files (PDFs, exports) - not part of the app
+Claude outputs/

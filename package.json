@@ -36,6 +36,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:vps": "set \"REACT_APP_API_URL=https://api.srilankansqld.org\" && set \"GENERATE_SOURCEMAP=false\" && react-scripts build && copy /Y deploy\\windows\\web.frontend.config build\\web.config",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "imagemin": "imagemin src/assets/images/*.jpg --out-dir=src/assets/images/compressed"

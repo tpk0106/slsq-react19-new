@@ -1,0 +1,17 @@
+# SLSQ server settings - copy to slsq.conf (same folder) and edit.
+# Used by all deploy/linux scripts. Contains no secrets.
+
+DOMAIN=srilankansqld.org
+API_DOMAIN=api.srilankansqld.org
+
+# http  = local VM test (no SSL yet)
+# https = HostPapa production (after 05-enable-ssl.sh)
+SCHEME=http
+
+APP_USER=slsq
+APP_DIR=/opt/slsq/app            # git clone of the repo
+WEB_ROOT=/var/www/slsq           # React build is copied here
+DB_NAME=slsq
+BACKUP_DIR=/var/backups/slsq
+ADMIN_EMAIL=admin@srilankansqld.org   # Let's Encrypt expiry notices
+TIMEZONE=Australia/Brisbane
