@@ -9,6 +9,9 @@ asapp() { sudo -u "$APP_USER" -H bash -c "cd '$APP_DIR' && $*"; }
 
 [[ -d "$APP_DIR/.git" ]] || die "Repository not found at $APP_DIR (see guide: clone step)."
 chown -R "$APP_USER:$APP_USER" "$APP_DIR"
+# The app user's home (e.g. /opt/slsq) must be writable for the npm cache (~/.npm)
+APP_HOME="$(getent passwd "$APP_USER" | cut -d: -f6)"
+[[ -n "$APP_HOME" ]] && chown "$APP_USER:$APP_USER" "$APP_HOME"
 
 if [[ "${1:-}" == "--pull" ]]; then
   info "git pull"

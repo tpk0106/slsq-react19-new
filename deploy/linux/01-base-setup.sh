@@ -27,6 +27,7 @@ info "Application user '$APP_USER'"
 if ! id "$APP_USER" &>/dev/null; then
   useradd --system --create-home --home-dir /opt/slsq --shell /bin/bash "$APP_USER"
 fi
+chown "$APP_USER:$APP_USER" /opt/slsq   # home may already exist (repo cloned first as root)
 mkdir -p "$WEB_ROOT" "$BACKUP_DIR"
 chmod 700 "$BACKUP_DIR"
 

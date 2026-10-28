@@ -59,6 +59,8 @@ esac
 info "Website login: slsq_app (least privilege)"
 echo "Choose the slsq_app password (put the same value in slsq-backend/.env as DB_PASSWORD). Avoid single quotes."
 read -rsp "slsq_app password: " APP_PW; echo
+read -rsp "Repeat:            " APP_PW2; echo
+[[ "$APP_PW" == "$APP_PW2" ]] || die "Passwords do not match - re-run this script."
 q -d master -Q "IF SUSER_ID(N'slsq_app') IS NULL CREATE LOGIN [slsq_app] WITH PASSWORD = N'$APP_PW', CHECK_POLICY = ON ELSE ALTER LOGIN [slsq_app] WITH PASSWORD = N'$APP_PW';"
 q -d "$DB_NAME" -Q "IF DATABASE_PRINCIPAL_ID(N'slsq_app') IS NULL CREATE USER [slsq_app] FOR LOGIN [slsq_app] ELSE ALTER USER [slsq_app] WITH LOGIN = [slsq_app];
 ALTER ROLE db_datareader ADD MEMBER [slsq_app]; ALTER ROLE db_datawriter ADD MEMBER [slsq_app]; GRANT EXECUTE TO [slsq_app];"
@@ -86,6 +88,9 @@ if [[ -n "$UPLOADS_ZIP" ]]; then
   unzip -o -q "$UPLOADS_ZIP" -d "$DEST" || [[ $? -eq 1 ]]
   [[ -d "$DEST/uploads" ]] || warn "Expected folder $DEST/uploads not found - check the zip layout"
   chown -R "$APP_USER:$APP_USER" "$DEST"
+  # Windows zips can carry restrictive permissions - normalise them
+  find "$DEST/uploads" -type d -exec chmod 755 {} +
+  find "$DEST/uploads" -type f -exec chmod 644 {} +
   ok "Uploads: $(du -sh "$DEST/uploads" 2>/dev/null | cut -f1)"
 fi
 

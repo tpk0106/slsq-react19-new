@@ -36,7 +36,14 @@ fi
 info "Listen on 127.0.0.1 only, limit memory to 2048 MB"
 /opt/mssql/bin/mssql-conf set network.ipaddress 127.0.0.1
 /opt/mssql/bin/mssql-conf set memory.memorylimitmb 2048
-systemctl restart mssql-server
+# SQL Server sometimes hangs while stopping (it writes a diagnostic dump). Don't wait forever.
+if ! timeout 90 systemctl restart mssql-server; then
+  warn "SQL Server did not stop cleanly within 90s - forcing restart"
+  pkill -9 -f /opt/mssql/bin/sqlservr || true
+  sleep 3
+  systemctl reset-failed mssql-server || true
+  systemctl start mssql-server
+fi
 systemctl enable mssql-server
 
 info "Installing sqlcmd (mssql-tools18)"
